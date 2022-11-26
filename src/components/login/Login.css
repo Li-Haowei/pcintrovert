@@ -1,0 +1,48 @@
+/* background white */
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+.login-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cyber-white);
+    /* https://images7.alphacoders.com/865/865098.jpg background image */
+    background-image: url("https://images7.alphacoders.com/865/865098.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.login-wrapper > h1 {
+    color: var(--cyber-pink);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    /* shadow text */
+    text-shadow: 2px 2px 4px #000000;
+}
+.submission-template {
+    /* vertical display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-form {
+    border: 2px black solid;
+    background-color: var(--cyber-white);
+    padding: 1vw 1vh;
+    text-align: center;
+}
+/* margin between items in submission template */
+.submission-template > * {
+    margin: 1vh 1vw;
+    width: 100%;
+    color: var(--cyber-darkblue);
+    background-color: var(--cyber-white);
+}
