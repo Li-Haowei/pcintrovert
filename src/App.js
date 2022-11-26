@@ -1,13 +1,54 @@
 import './App.css';
 import Login from './components/login/Login';
-// Ask user to login before proceed to the app page
+import MainPage from './components/main-page/MainPage';
+import BuildPC from './components/buildPC/BuildPC';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useRoutes,
+} from "react-router-dom";
+// if user is not logged in, show login page, else show the app page
 
-function App() {
+const LoginComponent = () => {
   return (
-    <div className='main'>
+    <div className="App">
       <Login />
     </div>
   );
+};
+
+const MainPageComponent = () => {
+  return (
+    <div className="App">
+      <MainPage />
+    </div>
+);
+};
+
+const BuildPCComponent = () => {
+  return (
+    <div className="App">
+      <BuildPC />
+    </div>
+  );
+};
+
+const App = () => {
+  let routes = useRoutes([
+    { path: "/", element: <LoginComponent /> },
+    { path: "mainpage", element: <MainPageComponent /> },
+    { path: "buildpc", element: <BuildPCComponent /> },
+  ]);
+  return routes;
+};
+
+const AppWrapper = () => {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
 }
 
-export default App;
+export default AppWrapper;

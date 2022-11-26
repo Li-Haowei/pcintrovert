@@ -21,7 +21,7 @@ nav {
     width: 100%;
 }
 
-ul {
+.nav-ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -29,37 +29,37 @@ ul {
     background-color: var(--cyber-darkblue);
 }
 
-li {
+.nav-li {
     float: left;
 }
 
-li a {
+.nav-li a {
     display: block;
     color: var(--cyber-white);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-li img {
+.nav-li img {
     /* fit the image to the navbar */
     width: 30px;
     /*background transparent*/
     background-color: transparent;
 }
 /* move the last element in nav to its right */
-li:last-child {
+.nav-li:last-child {
     position: absolute;
     right: 0;
     top: 0;
 }
 /* move the first element in nav to its left */
-li:first-child {
+.nav-li:first-child {
     left: 0;
     top: 0;
     position: absolute;
 }
 /* center other elements besides the first and last */
-li:nth-child(2) {
+.nav-li:nth-child(2) {
     float: none;
     margin: 0 auto;
 }

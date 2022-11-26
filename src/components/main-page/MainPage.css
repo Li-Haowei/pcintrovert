@@ -1,0 +1,67 @@
+/* Main page will have 4 grids */
+/* 1. Build PC */
+/* 2. View Build */
+/* 3. Check Out */
+/* 4. Future Work */
+
+/* color gradient backgroud */
+
+.mainpage{
+    /* height equals to vh minus navbar height */
+    height: calc(100vh - 46px);
+    width: 100vw;
+    display: grid;
+    background: linear-gradient(45deg, var(--cyber-darkblue), var(--cyber-purple), var(--cyber-lavender),var(--cyber-pink),var(--cyber-darkblue));
+    background-size: 600% 100%;
+    /* 2 by 2 grid */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* grid gap */
+    grid-gap: 1vw;
+    /* grid auto flow */
+    grid-auto-flow: dense;
+    /* animated color gradient background */
+    animation: gradient 10s ease infinite;
+    animation-direction: alternate;
+}
+/* animated color gradient background */
+@keyframes gradient {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+.mainpage > div {
+    /* grid item */
+    display: flex;
+    /* center the content */
+    justify-content: center;
+    align-items: center;
+    /* background color */
+    background-color: var(--cyber-darkblue);
+    /* border radius */
+    border-radius: 10px;
+    /* font size */
+    font-size: 2vw;
+    /* font color */
+    color: var(--cyber-white);
+    /* font weight */
+    font-weight: 600;
+    /* font family */
+    font-family: 'Inter', sans-serif;
+    /* text decoration */
+    text-decoration: none;
+    /* text shadow */
+    text-shadow: 0 0 1vw var(--cyber-white);
+    /* box shadow */
+    box-shadow: 0 0 1vw var(--cyber-white);
+    /* transition */
+    transition: all 0.3s ease-in-out;
+    margin: 4vw 2vw;
+    cursor: pointer;
+    /* text unhighlightable */
+    user-select: none;
+}

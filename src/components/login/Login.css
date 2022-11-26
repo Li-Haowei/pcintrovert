@@ -42,7 +42,38 @@
 /* margin between items in submission template */
 .submission-template > * {
     margin: 1vh 1vw;
+    padding: 1vh 1vw;
     width: 100%;
     color: var(--cyber-darkblue);
     background-color: var(--cyber-white);
+    /* border box */
+    box-sizing: border-box;
+}
+
+/* give button click some animation */
+.submission-template > button {
+    background-color: var(--cyber-pink);
+    color: var(--cyber-white);
+    border: none;
+    padding: 1vh 1vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+.submission-template > button:hover {
+    background-color: var(--cyber-purple);
+    color: var(--cyber-white);
+}
+
+/* if a button is clicked, bounce animation */
+.submission-template > button:active {
+    background-color: var(--cyber-purple);
+    color: var(--cyber-white);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
