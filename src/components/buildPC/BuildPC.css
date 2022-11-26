@@ -1,4 +1,4 @@
-.build-pc {
+.buildPc {
     height: calc(100vh - 46px);
     width: 100vw;
 }
@@ -38,12 +38,6 @@ a, button {
     position: fixed;
     z-index: 2000;
   }
-  #topBar #sidebarToggle:hover, #topBar #sidebarToggle:focus, #topBar #sidebarToggle:active, #topBar #sidebarToggle.active {
-    outline: none;
-  }
-  #topBar #sidebarToggle:hover {
-    color: white;
-  }
   
   #sidebar {
     padding-top: 50px;
@@ -65,27 +59,25 @@ a, button {
     left: 0;
     transition: all 1s ease 0s;
   }
-  #sidebar ul {
+  #sidebar > ul {
     display: block;
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  #sidebar ul li a {
+  #sidebar > ul > li >  a {
     display: block;
-    /* border-top: 1px solid #444; */
-    /* border-bottom: 1px solid #1A1A1A; */
-    color: #999;
+    color: var(--cyber-white);
     padding: 10px 15px;
   }
-  #sidebar ul li a:hover, #sidebar ul li a:focus, #sidebar ul li a:active {
+  #sidebar > ul > li a:hover, #sidebar > ul > li > a:focus, #sidebar > ul > li > a:active {
     text-decoration: none;
   }
-  #sidebar ul li a:hover {
+  #sidebar > ul > li > a:hover {
     color: var(--cyber-white);
     background: rgba(255, 255, 255, 0.2);
   }
-  #sidebar .footer {
+  #sidebar > .footer {
     position: fixed;
     bottom: 0;
     left: -180px;
@@ -94,23 +86,23 @@ a, button {
     width: 180px;
     border-top: 1px solid #444;
   }
-  #sidebar .footer li a {
+  #sidebar > .footer > li > a {
     border-top: none;
     border-bottom: none;
     padding: 5px 15px;
     font-size: 0.9em;
   }
-  #sidebar .footer li a:hover {
+  #sidebar > .footer > li > a:hover {
     background: none;
   }
-  #sidebar .footer .disclaimer {
+  #sidebar > .footer .disclaimer {
     font-size: 0.7em;
   }
-  #sidebar .sidebar-brand a {
+  #sidebar > .sidebar-brand > a {
     padding: 20px 15px;
     font-size: 18px;
   }
-  #sidebar .sidebar-brand a:hover {
+  #sidebar > .sidebar-brand > a:hover {
     background: none;
   }
   

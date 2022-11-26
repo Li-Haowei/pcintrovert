@@ -41,7 +41,7 @@ class BuildPC extends React.Component{
 
     render(){
         return (
-            <div className="build-pc">
+            <div className="buildPc">
 
             <button id="sidebarToggle" onClick={this.toggleSidebar}/>
             <div id="wrapper">
