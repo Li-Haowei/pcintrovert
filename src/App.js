@@ -4,6 +4,8 @@ import MainPage from './components/main-page/MainPage';
 import BuildPC from './components/buildPC/BuildPC';
 import Nav from './components/navbar/Nav';
 import Cart from './components/cart/Cart';
+import About from './components/about/About';
+import CurrentBuild from './components/viewPC/CurrentBuild';
 import React from 'react';
 import { useState } from 'react';
 import {
@@ -22,22 +24,6 @@ const LoginComponent = () => {
   );
 };
 
-const MainPageComponent = () => {
-  return (
-    <div className="App">
-      <MainPage />
-    </div>
-);
-};
-
-const BuildPCComponent = () => {
-  return (
-    <div className="App">
-      <BuildPC />
-    </div>
-  );
-};
-
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   let routes = useRoutes([
@@ -45,6 +31,8 @@ const App = () => {
     { path: "mainpage", element: <MainPage /> },
     { path: "buildpc", element: <BuildPC setCartItems={setCartItems} cartItems={cartItems}/>},
     { path: "cart", element: <Cart />},
+    { path: "about", element: <About />},
+    { path: "currentbuild", element: <CurrentBuild />},
   ]);
   return routes;
 };

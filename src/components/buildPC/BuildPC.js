@@ -497,6 +497,12 @@ function BuildPC({setCartItems, cartItems}) {
     /* if there is a change in cartItems, log it */
     useEffect(() => {
         if(cartItems.length!==0) localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // if the there is something in localStorage, update it with the new added items
+        if(localStorage.getItem('cart')!==null){
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            setCartItems(cart);
+        }
     }, [cartItems]);
     return (
             <div className="buildPc">

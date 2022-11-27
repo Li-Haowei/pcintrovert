@@ -15,6 +15,14 @@ class MainPage extends React.Component{
         // go to '/buildpc'
         window.open("/buildpc", "_self");
     };
+    goToCart = () => {
+        // go to '/cart'
+        window.open("/cart", "_self");
+    };
+    goToAbout = () => {
+        // go to '/about'
+        window.open("/about", "_self");
+    };
     render(){
         return (
             <div className="mainpage">
@@ -24,10 +32,10 @@ class MainPage extends React.Component{
                 <div className="view-build">
                     <h1>View Build</h1>
                 </div>
-                <div className="check-out">
+                <div className="check-out" onClick={this.goToCart}>
                     <h1>Check Out</h1>
                 </div>
-                <div className="future-work">
+                <div className="future-work" onClick={this.goToAbout}>
                     <h1>Future Work</h1>
                 </div>
             </div>
