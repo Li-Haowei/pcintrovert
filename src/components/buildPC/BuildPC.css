@@ -24,7 +24,7 @@ a, button {
     padding: 5px 12px;
     font-size: 22px;
   }
- #sidebarToggle {
+#sidebarToggle {
     background: none;
     padding: 0;
     margin: 0;
@@ -38,9 +38,9 @@ a, button {
     height: 50px;
     position: fixed;
     z-index: 2000;
-  }
+}
   
-  #sidebar {
+#sidebar {
     padding-top: 50px;
     height: 100%;
     z-index: 1000;
@@ -50,12 +50,12 @@ a, button {
     color: var(--cyber-white);
     background: linear-gradient(to bottom, var(--cyber-darkblue), var(--cyber-black));
     transition: all 0.5s ease-out 0s;
-  }
-  #sidebar.active {
+}
+#sidebar.active {
     top: 46px;
     left: 0;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5), 10px 0 15px rgba(0, 0, 0, 0.5);
-  }
+}
   #sidebar.active .footer {
     left: 0;
     transition: all 1s ease 0s;
@@ -117,4 +117,46 @@ a, button {
   }
   #wrapper #wrapperContent {
     padding: 3%;
+    /* border box */
+    box-sizing: border-box;
   }
+
+  .four-by-four-grids {
+    /* 4 x 1 grid */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    width: 100%;
+    height: 100%;
+  }
+.four-by-four-grids > .grid {
+    border: 1px solid var(--cyber-darkblue);
+    background: var(--cyber-darkblue);
+    color: var(--cyber-white);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.5s ease-out 0s;
+    height: 80vh;
+    width: 22vw;
+}
+
+.four-by-four-grids > .grid > img {
+    height: 80vh;
+    width: 22vw;
+    object-fit: cover;
+    object-position: center;
+    /*float left*/
+    float: left;
+}
+
+/* each grid can be toggled to expand */
+.four-by-four-grids > .grid.expand {
+    height: 80vh;
+    width: 40vw;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
