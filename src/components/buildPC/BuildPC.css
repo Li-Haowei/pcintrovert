@@ -16,14 +16,6 @@ a, button {
     text-decoration: none;
   }
   
-  
-#topBar {
-    background: var(--cyber-black);
-    background: linear-gradient(to bottom, var(--cyber-darkblue), var(--cyber-black));
-    width: 100%;
-    padding: 5px 12px;
-    font-size: 22px;
-  }
 #sidebarToggle {
     background: none;
     padding: 0;
@@ -47,8 +39,8 @@ a, button {
     position: fixed;
     left: -135px;
     width: 180px;
-    color: var(--cyber-white);
-    background: linear-gradient(to bottom, var(--cyber-darkblue), var(--cyber-black));
+    color: var(--cyber-black);
+    background: linear-gradient(to bottom, var(--cyber-white), var(--cyber-darkblue));
     transition: all 0.5s ease-out 0s;
 }
 #sidebar.active {
@@ -68,15 +60,17 @@ a, button {
   }
   #sidebar > ul > li >  a {
     display: block;
-    color: var(--cyber-white);
+    color: var(--cyber-black);
     padding: 10px 15px;
   }
   #sidebar > ul > li a:hover, #sidebar > ul > li > a:focus, #sidebar > ul > li > a:active {
     text-decoration: none;
   }
   #sidebar > ul > li > a:hover {
-    color: var(--cyber-white);
+    color: var(--cyber-darkblue);
+    font-weight: 800;
     background: rgba(255, 255, 255, 0.2);
+    transition: none;
   }
   #sidebar > .footer {
     position: fixed;
@@ -160,3 +154,14 @@ a, button {
     width: 35vw;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
+
+.introduction-in-store {
+  padding: 20vh;
+  width: 80vw;
+  height: 70vh;
+}
+.introduction-in-store > h1 > img {
+  height: 50px;
+  width: 50px;
+}
+
