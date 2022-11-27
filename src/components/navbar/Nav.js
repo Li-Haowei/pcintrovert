@@ -8,9 +8,11 @@ import './Nav.css';
 function Nav() {
     return (
         <div className='Nav'>
+            <div id="literally-just-a-blue-banner"></div>
             <nav>
                 <ul className="nav-ul">
                     <li className="nav-li"><a href="#"><img src={logo}/> Introvert PC</a></li>
+                    <li className="nav-li"><a href="/mainpage">Home</a></li>
                     <li className="nav-li"><a href="/mainpage">Home</a></li>
                     <li className="nav-li"><a href="/cart"><img src={cart}/></a></li>
                     <li className="nav-li"><a href="/"><img src={userProfilePic}/></a></li>

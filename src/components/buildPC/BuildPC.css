@@ -102,17 +102,15 @@ a, button {
   }
   
   #wrapper {
-    transition: all 0.5s ease-out 0s;
-    padding-left: 45px;
-    height: 100%;
+    /* border box */
+    box-sizing: border-box;
+  }
+  #wrapperContent {
+    padding: 3%;
+    box-sizing: border-box;
   }
   #wrapper.active {
     /* padding-left: $sideMenuWidth; */
-  }
-  #wrapper #wrapperContent {
-    padding: 3%;
-    /* border box */
-    box-sizing: border-box;
   }
 
   .four-by-four-grids {
@@ -164,4 +162,6 @@ a, button {
   height: 50px;
   width: 50px;
 }
-
+.add-to-cart {
+  position: fixed;
+}

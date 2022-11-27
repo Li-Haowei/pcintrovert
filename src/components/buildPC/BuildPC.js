@@ -481,17 +481,17 @@ function BuildPC({setCartItems, cartItems}) {
         let shelf = document.getElementsByClassName('products')[0];
         let grids = shelf.getElementsByClassName('grid');
         for (let i = 0; i < grids.length; i++){
+            let product = grids[i].getElementsByClassName('product-info')[0];
             let btn = document.createElement('button');
             btn.classList.add('add-to-cart');
             btn.innerHTML = 'Add to Cart';
             btn.onclick = () => {
-                let product = grids[i].getElementsByClassName('product-info')[0];
                 let name = product.getElementsByClassName('product-name')[0].innerHTML;
                 let price = product.getElementsByClassName('product-price')[0].innerHTML;
                 let image = grids[i].getElementsByTagName('img')[0].src;
                 setCartItems( arr => [...arr, {name, price, image}]);
             }
-            grids[i].appendChild(btn);
+            product.appendChild(btn);
         }
     }
     /* if there is a change in cartItems, log it */

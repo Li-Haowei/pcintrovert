@@ -2,7 +2,14 @@
     background-color: var(--cyber-darkblue);
     overflow: hidden;
 }
-
+#literally-just-a-blue-banner{
+    width: 100vw;
+    height: 46px;
+    position: fixed;
+    top: 0;
+    background-color: var(--cyber-darkblue);
+    z-index: 0;
+}
 nav {
     float: left;
     width: 100%;
@@ -45,10 +52,11 @@ nav {
     top: 0;
     position: absolute;
 }
-/* center other elements besides the first and last */
+/* second element in nav */
 .nav-li:nth-child(2) {
-    float: none;
-    margin: 0 auto;
+    position: absolute;
+    left: 50vw;
+    top: 0;
 }
 /*second to last element will be next to the last element*/
 .nav-li:nth-last-child(2) {
