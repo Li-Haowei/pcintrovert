@@ -141,13 +141,13 @@ a, button {
     margin: 0;
     cursor: pointer;
     transition: all 0.5s ease-out 0s;
-    height: 80vh;
-    width: 22vw;
+    height:  75vh;
+    width: 18vw;
 }
 
 .four-by-four-grids > .grid > img {
-    height: 80vh;
-    width: 22vw;
+    height: 75vh;
+    width: 20vw;
     object-fit: cover;
     object-position: center;
     /*float left*/
@@ -156,7 +156,7 @@ a, button {
 
 /* each grid can be toggled to expand */
 .four-by-four-grids > .grid.expand {
-    height: 80vh;
-    width: 40vw;
+    height: 75vh;
+    width: 35vw;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
