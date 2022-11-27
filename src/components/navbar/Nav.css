@@ -1,16 +1,3 @@
-/* This will be the css for navbar */
-/*
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="#"><img src={logo}/> Introvert PC</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#"><img src={userProfilePic}/></a></li>
-                </ul>
-            </nav>
-        </div>
-*/
-
 .Nav {
     background-color: var(--cyber-darkblue);
     overflow: hidden;

@@ -7,33 +7,35 @@ import menuIcon from '../../assets/menu.png';
 import logo from '../../assets/mini-pc.jpg';
 import axios from 'axios'; 
 
-class BuildPC extends React.Component{
-    toggleSidebar = () => {
+function BuildPC({setCartItems, cartItems}) {
+    const toggleSidebar = () =>{
         document.getElementById("sidebar").classList.toggle('active');
         document.getElementById("wrapper").classList.toggle('active');
     }
-
     /* if user click outside of sidebar, close sidebar */
-    componentDidMount(){
-        document.addEventListener('click', this.handleClickOutside, true);
+    const componentDidMount = () =>{
+        document.addEventListener('click', handleClickOutside, true);
     }
-
-    componentWillUnmount(){
-        document.removeEventListener('click', this.handleClickOutside, true);
+    const componentWillUnmount = () => {
+        document.removeEventListener('click', handleClickOutside, true);
     }
-
-    handleClickOutside = (event) => {
+    const handleClickOutside = (event) => {
         if (document.getElementById("sidebar").contains(event.target)){
             return;
         }
         document.getElementById("sidebar").classList.remove('active');
         document.getElementById("wrapper").classList.remove('active');
     }
-    cleanShelf = () => {
+    // call componentDidMount and componentWillUnmount
+    useEffect(() => {
+        componentDidMount();
+        return componentWillUnmount;
+    }, []);
+    const cleanShelf = () => {
         document.getElementsByClassName('products')[0].innerHTML = "";
     }
-    loadCasesToProducts = () => {
-        this.cleanShelf();
+    const loadCasesToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         /* create a grid for each case */
         shelf.innerHTML += `
@@ -72,11 +74,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadCoolingToProducts = () => {
-        this.cleanShelf();
+    const loadCoolingToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         /* create a grid for each case */
         shelf.innerHTML += `
@@ -115,11 +117,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }   
-    loadCablesToProducts = () => {
-        this.cleanShelf();
+    const loadCablesToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         /* create a grid for each case */
         shelf.innerHTML += `
@@ -159,11 +161,11 @@ class BuildPC extends React.Component{
             </div>
             `
         
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadCPUsToProducts = () => {
-        this.cleanShelf();
+    const loadCPUsToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         /* create a grid for each case */
         shelf.innerHTML += `
@@ -203,11 +205,11 @@ class BuildPC extends React.Component{
             </div>
             `
         
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadGPUsToProducts = () => {
-        this.cleanShelf();
+    const loadGPUsToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         shelf.innerHTML += `
             <div class="grid">
@@ -246,11 +248,11 @@ class BuildPC extends React.Component{
             </div>
             `
 
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadRAMToProducts = () => {
-        this.cleanShelf();
+    const loadRAMToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         shelf.innerHTML += `
             <div class="grid">
@@ -289,11 +291,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadStorageToProducts = () => {
-        this.cleanShelf();
+    const loadStorageToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         shelf.innerHTML += `
             <div class="grid">
@@ -331,11 +333,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadMotherboardToProducts = () => {
-        this.cleanShelf();
+    const loadMotherboardToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         shelf.innerHTML += `
             <div class="grid">
@@ -373,11 +375,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadPowerSupplyToProducts = () => {
-        this.cleanShelf();
+    const loadPowerSupplyToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
         shelf.innerHTML += `
             <div class="grid">
@@ -415,11 +417,11 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    loadAccessoriesToProducts = () => {
-        this.cleanShelf();
+    const loadAccessoriesToProducts = () => {
+        cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
 
         shelf.innerHTML += `
@@ -458,10 +460,10 @@ class BuildPC extends React.Component{
                 </div>
             </div>
             `
-        this.addExpandableFunctions();
-        this.btnAddToCart();
+        addExpandableFunctions();
+        btnAddToCart();
     }
-    addExpandableFunctions = () => {
+    const addExpandableFunctions = () => {
         //when one expands, all others collapse
         let grids = document.getElementsByClassName('grid');
         for (let i = 0; i < grids.length; i++){
@@ -472,9 +474,8 @@ class BuildPC extends React.Component{
                 grids[i].classList.toggle('expand');
             })
         }
-    }
-    cart = [];
-    btnAddToCart = () => {
+    }  
+    const btnAddToCart = () => {
         //This function will create a button for each product
         //When clicked, it will add the product to TheCart
         let shelf = document.getElementsByClassName('products')[0];
@@ -487,82 +488,79 @@ class BuildPC extends React.Component{
                 let product = grids[i].getElementsByClassName('product-info')[0];
                 let name = product.getElementsByClassName('product-name')[0].innerHTML;
                 let price = product.getElementsByClassName('product-price')[0].innerHTML;
-                // add into TheCart
-                this.cart.push({
-                    name: name,
-                    price: price
-                });
-                console.log(this.cart);
+                let image = grids[i].getElementsByTagName('img')[0].src;
+                setCartItems( arr => [...arr, {name, price, image}]);
             }
             grids[i].appendChild(btn);
         }
     }
-
-
-    render(){
-        return (
+    /* if there is a change in cartItems, log it */
+    useEffect(() => {
+        if(cartItems.length!==0) localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems]);
+    return (
             <div className="buildPc">
 
-            <button id="sidebarToggle" onClick={this.toggleSidebar}/>
+            <button id="sidebarToggle" onClick={toggleSidebar}/>
             <div id="wrapper">
             <div id="sidebar"> 
                 <ul>
                     <li>
-                        <a href="#Cases" onClick={this.loadCasesToProducts}>
+                        <a href="#Cases" onClick={loadCasesToProducts}>
                         Case
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#Cooling" onClick={this.loadCoolingToProducts}>
+                        <a href="#Cooling" onClick={loadCoolingToProducts}>
                         Cooling
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#Cables"  onClick={this.loadCablesToProducts}>
+                        <a href="#Cables"  onClick={loadCablesToProducts}>
                         Cables
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#CPU" onClick={this.loadCPUsToProducts}>
+                        <a href="#CPU" onClick={loadCPUsToProducts}>
                         CPU
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#GPU" onClick={this.loadGPUsToProducts}>
+                        <a href="#GPU" onClick={loadGPUsToProducts}>
                         GPU
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#RAM" onClick={this.loadRAMToProducts}>
+                        <a href="#RAM" onClick={loadRAMToProducts}>
                         RAM
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#Disk" onClick={this.loadStorageToProducts}>
+                        <a href="#Disk" onClick={loadStorageToProducts}>
                         Disk
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#Motherboard" onClick={this.loadMotherboardToProducts}>
+                        <a href="#Motherboard" onClick={loadMotherboardToProducts}>
                         Motherboard 
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#PowerSupply" onClick={this.loadPowerSupplyToProducts}>
+                        <a href="#PowerSupply" onClick={loadPowerSupplyToProducts}>
                         Power Supply
                         <span className="pull-right"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="#Accessories" onClick={this.loadAccessoriesToProducts}>
+                        <a href="#Accessories" onClick={loadAccessoriesToProducts}>
                         Accessories
                         <span className="pull-right"></span>
                         </a>
@@ -588,8 +586,7 @@ class BuildPC extends React.Component{
 
             </div>
             </div>
-        )
-    }
+    );  
 }
 
 export default BuildPC;
