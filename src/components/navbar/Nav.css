@@ -1,5 +1,4 @@
 .Nav {
-    background-color: var(--cyber-darkblue);
     overflow: hidden;
 }
 #literally-just-a-blue-banner{
@@ -9,6 +8,10 @@
     top: 0;
     background-color: var(--cyber-darkblue);
     z-index: 0;
+    /* gradient color changing from both sides to middle */
+    background: linear-gradient(to right, var(--cyber-lavender),var(--cyber-purple), var(--cyber-darkblue), var(--cyber-black), var(--cyber-darkblue), var(--cyber-lavender),var(--cyber-purple));
+    background-size: 600% 100%;
+    animation: gradient 10s ease infinite;
 }
 nav {
     float: left;

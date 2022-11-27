@@ -65,3 +65,38 @@
     /* text unhighlightable */
     user-select: none;
 }
+
+/* hover effect on mainpage > div */
+.mainpage > div:hover {
+    /* background color */
+    background-color: var(--cyber-white);
+    /* font color */
+    color: var(--cyber-darkblue);
+    /* text shadow */
+    text-shadow: 0 0 1vw var(--cyber-darkblue);
+    /* box shadow */
+    box-shadow: 0 0 1vw var(--cyber-darkblue);
+}
+
+/* blink animation on mainpage > div > h1 */
+.mainpage > div > h1 {
+    /* animation */
+    animation: blink 6s linear infinite;
+}
+/* blink animation speed up if hover */
+.mainpage > div:hover > h1 {
+    /* animation */
+    animation: blink 1s linear infinite;
+}
+/* blink animation */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

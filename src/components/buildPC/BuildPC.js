@@ -574,9 +574,9 @@ function BuildPC({setCartItems, cartItems}) {
                 
                 </ul>
                 <ul className="footer">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Legal</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="https://github.com/Li-Haowei/pcintrovert/issues">Help</a></li>
+                <li><a href="https://github.com/Li-Haowei/pcintrovert">Legal</a></li>
                 </ul>
             </div>
             <div id="wrapperContent">
