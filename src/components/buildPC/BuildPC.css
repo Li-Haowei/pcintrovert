@@ -13,6 +13,7 @@
 }
 a, button {
     transition: all 0.5s ease-out 0s;
+    text-decoration: none;
   }
   
   
