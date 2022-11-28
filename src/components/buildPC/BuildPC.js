@@ -6,8 +6,145 @@ import { useState, useEffect } from 'react';
 import menuIcon from '../../assets/menu.png';
 import logo from '../../assets/mini-pc.jpg';
 import axios from 'axios'; 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
+import { getStorage } from "firebase/storage";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBjqL4c6rUKhHjwJwR1dxMmTZ1R9X3HfmE",
+    authDomain: "introvertpc-a8c64.firebaseapp.com",
+    projectId: "introvertpc-a8c64",
+    storageBucket: "introvertpc-a8c64.appspot.com",
+    messagingSenderId: "31681504808",
+    appId: "1:31681504808:web:7cc7fc32bf7dde3381371d",
+    measurementId: "G-DM1TC0KH5W"
+  };
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const storage = getStorage(app, "gs://introvertpc-a8c64.appspot.com");
 
 function BuildPC({setCartItems, cartItems}) {
+    
+    /* get all files from storage */
+    const [CPUs, setCPUs] = useState([]);
+    const [GPUs, setGPUs] = useState([]);
+    const [RAMs, setRAMs] = useState([]);
+    const [Motherboards, setMotherboards] = useState([]);
+    const [Storages, setStorages] = useState([]);
+    const [Cases, setCases] = useState([]);
+    const [PowerSupplies, setPowerSupplies] = useState([]);
+    const [Coolings, setCoolings] = useState([]);
+
+    useEffect(() => {
+        const storageRef = ref(storage);
+        // get neweggCPU.json from storage
+        getDownloadURL(ref(storage, 'neweggCPU.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setCPUs(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggGPU.json from storage
+        getDownloadURL(ref(storage, 'neweggGPU.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setGPUs(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggRAM.json from storage
+        getDownloadURL(ref(storage, 'neweggRAM.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setRAMs(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggMotherboard.json from storage
+        getDownloadURL(ref(storage, 'neweggMotherboard.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setMotherboards(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggStorage.json from storage
+        getDownloadURL(ref(storage, 'neweggStorage.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setStorages(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggCase.json from storage
+        getDownloadURL(ref(storage, 'neweggCase.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setCases(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggPowerSupply.json from storage
+        getDownloadURL(ref(storage, 'neweggPowerSupply.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setPowerSupplies(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+        // get neweggCPUCooler.json from storage
+        getDownloadURL(ref(storage, 'neweggCPUCooler.json'))
+        .then((url) => {
+            axios.get(url)
+            .then((response) => {
+                setCoolings(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        )
+
+    }, []);
+
     const toggleSidebar = () =>{
         document.getElementById("sidebar").classList.toggle('active');
         document.getElementById("wrapper").classList.toggle('active');
