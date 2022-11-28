@@ -133,23 +133,31 @@ a, button {
     margin: 0;
     cursor: pointer;
     transition: all 0.5s ease-out 0s;
-    height:  75vh;
-    width: 18vw;
+    height:  30vh;
+    width: 20vw;
 }
 
 .four-by-four-grids > .grid > img {
-    height: 75vh;
+    height: 20vh;
     width: 20vw;
     object-fit: cover;
     object-position: center;
     /*float left*/
     float: left;
 }
+.product-name {
+  font-size: 0.7rem;
+}
+.product-price {
+  font-size: 0.7rem;
+}
+.add-to-cart {
 
+}
 /* each grid can be toggled to expand */
 .four-by-four-grids > .grid.expand {
-    height: 75vh;
-    width: 35vw;
+    height: 30vh;
+    width: 20vw;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -161,7 +169,4 @@ a, button {
 .introduction-in-store > h1 > img {
   height: 50px;
   width: 50px;
-}
-.add-to-cart {
-  position: fixed;
 }
