@@ -176,50 +176,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadCasesToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        /* create a grid for each case */
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81JwnDYiKTL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">AMANSON PC CASE ATX Mid Tower Case</p>
-        //             <p class="product-price">$88.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71vbA44y12L._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">GIM ATX Mid-Tower Case White Gaming PC Case</p>
-        //             <p class="product-price">$127.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81hL4tPkXZL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Corsair 4000D Airflow Tempered Glass Mid-Tower ATX PC Case - Black</p>
-        //             <p class="product-price">$89.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71eWq2GbhhL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">HYTE Y60 Modern Aesthetic Dual Chamber Panoramic Tempered Glass Mid-Tower ATX Computer Gaming Case</p>
-        //             <p class="product-price">$159.99</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < Cases.length; i++){
+            Cases[i].Specs = "<ul>" + Cases[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${Cases[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${Cases[i].Name}</p>
                         <p class="product-price">${Cases[i].Price}</p>
+                        <div class="product-specs">${Cases[i].Specs}</div>
+                        <p class="product-description">${Cases[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -231,54 +197,22 @@ function BuildPC({setCartItems, cartItems}) {
     const loadCoolingToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        /* create a grid for each case */
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/61fJ8nGgqPL._SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Enermax Liqmax III 240 RGB AIO CPU Liquid Cooler</p>
-        //             <p class="product-price">$54.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81gIOOqmS7L._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Cooler Master Hyper 212 Black Edition RGB CPU Air Cooler</p>
-        //             <p class="product-price">$50.53</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71Q10b2FtBL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Thermaltake UX200 SE 5V Motherboard</p>
-        //             <p class="product-price">$29.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71irWztV+qL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Jonsbo CR1400 RGB CPU Air Cooler</p>
-        //             <p class="product-price">$25.99</p>
-        //         </div>
-        //     </div>
-        //     `
+        // Specs is a list of <li> elements in string format, remove [ and ] and wrap them with ul
         for (let i = 0; i < Coolings.length; i++){
+            Coolings[i].Specs = "<ul>" + Coolings[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${Coolings[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${Coolings[i].Name}</p>
                         <p class="product-price">${Coolings[i].Price}</p>
+                        <div class="product-specs">${Coolings[i].Specs}</div>
+                        <p class="product-description">${Coolings[i].Link}</p>
                     </div>
                 </div>
                 `
         }
+                        
         addExpandableFunctions();
         btnAddToCart();
     }   
@@ -329,50 +263,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadCPUsToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        /* create a grid for each case */
-                // shelf.innerHTML += `
-                //     <div class="grid">
-                //         <img src="https://m.media-amazon.com/images/I/616VM20+AzL._AC_SL1384_.jpg" alt="case">
-                //         <div class="product-info">
-                //             <p class="product-name">AMD Ryzen 9 5900X 12-core, 24-Thread Unlocked Desktop Processor</p>
-                //             <p class="product-price">$340.86</p>
-                //         </div>
-                //     </div>
-                //     `
-                // shelf.innerHTML += `
-                //     <div class="grid">
-                //         <img src="https://m.media-amazon.com/images/I/61vGQNUEsGL._AC_SL1384_.jpg" alt="case">
-                //         <div class="product-info">
-                //             <p class="product-name">AMD Ryzen 5 5600X 6-core, 12-Thread Unlocked Desktop Processor with Wraith Stealth Cooler</p>
-                //             <p class="product-price">$158.98</p>
-                //         </div>
-                //     </div>
-                //     `
-                // shelf.innerHTML += `
-                //     <div class="grid">
-                //         <img src="https://m.media-amazon.com/images/I/61uI+orDOZL._AC_SL1500_.jpg" alt="case">
-                //         <div class="product-info">
-                //             <p class="product-name">Intel Core i9-13900K Desktop Processor 24 cores (8 P-cores + 16 E-cores) 36M Cache, up to 5.8 GHz</p>
-                //             <p class="product-price">$649.99</p>
-                //         </div>
-                //     </div>
-                //     `
-                // shelf.innerHTML += `
-                //     <div class="grid">
-                //         <img src="https://m.media-amazon.com/images/I/71LIKeM7GGL._AC_SL1500_.jpg" alt="case">
-                //         <div class="product-info">
-                //             <p class="product-name">Intel® Core™ i5-11400F Desktop Processor 6 Cores up to 4.4 GHz LGA1200 (Intel® 500 Series & Select 400 Series Chipset) 65W</p>
-                //             <p class="product-price">$135.99</p>
-                //         </div>
-                //     </div>
-                //     `
         for (let i = 0; i < CPUs.length; i++){
+            CPUs[i].Specs = "<ul>" + CPUs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${CPUs[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${CPUs[i].Name}</p>
                         <p class="product-price">${CPUs[i].Price}</p>
+                        <div class="product-specs">${CPUs[i].Specs}</div>
+                        <p class="product-description">${CPUs[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -383,49 +283,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadGPUsToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81aYOYQ4vBL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">ASUS TUF Gaming AMD Radeon™ RX 6800 OC Edition Graphics Card</p>
-        //             <p class="product-price">$469.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81FTVf0jQCL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">PowerColor Red Devil AMD Radeon RX 6950 XT Graphics Card</p>
-        //             <p class="product-price">$1,103.00</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81JP9a4rCCS._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">ZOTAC Gaming GeForce RTX™ 3090 Trinity OC 24GB GDDR6X 384-bit 19.5 Gbps PCIE 4.0 Gaming Graphics Card</p>
-        //             <p class="product-price">$1,298.00</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/7156DLyUsYL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 192-bit 15 Gbps PCIE 4.0 Gaming Graphics Card</p>
-        //             <p class="product-price">$349.99</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < GPUs.length; i++){
+            GPUs[i].Specs = "<ul>" + GPUs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${GPUs[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${GPUs[i].Name}</p>
                         <p class="product-price">${GPUs[i].Price}</p>
+                        <div class="product-specs">${GPUs[i].Specs}</div>
+                        <p class="product-description">${GPUs[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -436,50 +303,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadRAMToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81bIRUg3kmL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Corsair Vengeance LPX 16GB (2x8GB) DDR4 DRAM 3200MHz C16 Desktop Memory Kit</p>
-        //             <p class="product-price">$49.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81019udFtML._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">
-        //             Silicon Power Value Gaming DDR4 RAM 32GB (16GBx2) 3200MHz (PC4 25600) 288-pin CL16 1.35V UDIMM Desktop Memory Module with Heatsink Grey</p>
-        //             <p class="product-price">$66.97</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71R65sYfi+L._AC_SL1200_.jpg" alt="case">
-        //         <div class="product-info">  
-        //             <p class="product-name">CORSAIR VENGEANCE RGB PRO 32GB (2x16GB) DDR4 3600 (PC4-28800) C18 Desktop Memory</p>
-        //             <p class="product-price">$109.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/61mydJ3uPHL._AC_SL1100_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">G.Skill Trident Z NEO Series 64GB (2 x 32GB) 288-Pin SDRAM DDR4 3200 (PC4-25600) CL16-18-18-38 1.35V Dual Channel Desktop Memory</p>
-        //             <p class="product-price">$219.99</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < RAMs.length; i++){
+            RAMs[i].Specs = "<ul>" + RAMs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${RAMs[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${RAMs[i].Name}</p>
                         <p class="product-price">${RAMs[i].Price}</p>
+                        <div class="product-specs">${RAMs[i].Specs}</div>
+                        <p class="product-description">${RAMs[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -490,49 +323,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadStorageToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81r0OmqcaIL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">SABRENT 256GB Rocket NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive</p>
-        //             <p class="product-price">$44.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81JpqaOdiDL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">SABRENT 1TB Rocket NVMe 4.0 Gen4 PCIe M.2 Internal SSD Extreme Performance Solid State Drive</p>
-        //             <p class="product-price">$129.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/61Tn54dVduL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">SK hynix Gold P31 2TB PCIe NVMe Gen3 M.2 2280 Internal SSD l Up to 3500MB/S l Compact M.2 SSD Form Factor SK hynix SSD - Internal Solid State Drive with 128-Layer NAND Flash</p>
-        //             <p class="product-price">$149.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81kDJcPEPML._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">SAMSUNG 980 PRO SSD 2TB PCIe NVMe Gen 4 Gaming M.2 Internal Solid State Hard Drive Memory Card, Maximum Speed, Thermal Control, MZ-V8P2T0B q</p>
-        //             <p class="product-price">$216.95</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < Storages.length; i++){
+            Storages[i].Specs = "<ul>" + Storages[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${Storages[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${Storages[i].Name}</p>
                         <p class="product-price">${Storages[i].Price}</p>
+                        <div class="product-specs">${Storages[i].Specs}</div>
+                        <p class="product-description">${Storages[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -543,49 +343,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadMotherboardToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/81Q-hxowAqL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">ASUS ROG Strix B550-F Gaming AMD AM4 Zen 3 Ryzen 5000 & 3rd Gen Ryzen ATX Gaming Motherboard (PCIe 4.0, 2.5Gb LAN, BIOS Flashback, HDMI 2.1, Addressable Gen 2 RGB Header and Aura Sync)</p>
-        //             <p class="product-price">$159.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/61dobbaqzbL._AC_SL1280_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Asus ROG Strix Z590-A Gaming WiFi II LGA1200(Intel 11th/10thGen)ATX WhiteScheme Gaming Motherboard (14+2PowerStages,DDR4 5133,WiFi6 AX201,Intel2.5Gb LAN,Thunderbolt4,3x M.2/NVMe SSD, AURARGB lighting)</p>
-        //             <p class="product-price">$149.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/91ViCwb81mL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">MSI B550 Gaming GEN3 Gaming Motherboard (AMD AM4, DDR4, PCIe 3.0, SATA 6Gb/s, M.2, USB 3.2 Gen 1, HDMI, ATX, AMD Ryzen 5000/4000 Series Processors)</p>
-        //             <p class="product-price">$161.34</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/813ulZUa22L._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">MSI MPG X570S Edge MAX WiFi Gaming Motherboard (ATX, AMD, Socket AM4. DDR4, PCIe 4, CFX, M.2 Slots, Wi-Fi 6E)</p>
-        //             <p class="product-price">$234.99</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < Motherboards.length; i++){
+            Motherboards[i].Specs = "<ul>" + Motherboards[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${Motherboards[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${Motherboards[i].Name}</p>
                         <p class="product-price">${Motherboards[i].Price}</p>
+                        <div class="product-specs">${Motherboards[i].Specs}</div>
+                        <p class="product-description">${Motherboards[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -596,49 +363,16 @@ function BuildPC({setCartItems, cartItems}) {
     const loadPowerSupplyToProducts = () => {
         cleanShelf();
         let shelf = document.getElementsByClassName('products')[0];
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/71x2zAnwmuL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">EVGA 550 BP, 80+ Bronze 550W, 3 Year Warranty, Compact 120mm Size, Power Supply 100-BP-0550-K1</p>
-        //             <p class="product-price">$51.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/816hgUgi5xL._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Corsair RMX Series (2021), RM750x, 750 Watt, Gold, Fully Modular Power Supply</p>
-        //             <p class="product-price">$124.45</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/51O0HdyXuwL._AC_SL1001_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">NZXT C850 PSU (2022) - PA-8G1BB-US - 850 Watt PSU - 80+ Gold Certified - Fully Modular - Sleeved Cables - ATX Gaming Power Supply</p>
-        //             <p class="product-price">$129.99</p>
-        //         </div>
-        //     </div>
-        //     `
-        // shelf.innerHTML += `
-        //     <div class="grid">
-        //         <img src="https://m.media-amazon.com/images/I/710giQRHyQS._AC_SL1500_.jpg" alt="case">
-        //         <div class="product-info">
-        //             <p class="product-name">Corsair RMX Series (2021), RM1000x, 1000 Watt, Gold, Fully Modular Power Supply,Black</p>
-        //             <p class="product-price">$167.99</p>
-        //         </div>
-        //     </div>
-        //     `
         for (let i = 0; i < PowerSupplies.length; i++){
+            PowerSupplies[i].Specs = "<ul>" + PowerSupplies[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
                     <img src="${PowerSupplies[i].Picture}" alt="case">
                     <div class="product-info">
                         <p class="product-name">${PowerSupplies[i].Name}</p>
                         <p class="product-price">${PowerSupplies[i].Price}</p>
+                        <div class="product-specs">${PowerSupplies[i].Specs}</div>
+                        <p class="product-description">${PowerSupplies[i].Link}</p>
                     </div>
                 </div>
                 `
@@ -689,18 +423,51 @@ function BuildPC({setCartItems, cartItems}) {
         addExpandableFunctions();
         btnAddToCart();
     }
+    // const addExpandableFunctions = () => {
+    //     //when one expands, all others collapse
+    //     let grids = document.getElementsByClassName('grid');
+    //     for (let i = 0; i < grids.length; i++){
+    //         grids[i].addEventListener('click', () => {
+    //             for (let j = 0; j < grids.length; j++){
+    //                 grids[j].classList.remove('expand');
+    //             }
+    //             grids[i].classList.toggle('expand');
+    //         })
+    //     }
+    // } 
+    // // click outside of grid, remove grid expand, else do nothing
+    // document.addEventListener('click', (e) => {
+    //     let grids = document.getElementsByClassName('grid');
+    //     for (let i = 0; i < grids.length; i++){
+    //         if (grids[i].classList.contains('expand') && !grids[i].contains(e.target)){
+    //             grids[i].classList.remove('expand');
+    //         }
+    //     }
+    // })
+
+    // each row there are 4 grids, now click on one grid, it will expand all the grids in the same row
     const addExpandableFunctions = () => {
-        //when one expands, all others collapse
         let grids = document.getElementsByClassName('grid');
         for (let i = 0; i < grids.length; i++){
             grids[i].addEventListener('click', () => {
-                for (let j = 0; j < grids.length; j++){
-                    grids[j].classList.remove('expand');
+                let row = Math.floor(i / 4);
+                for (let j = 0; j < 4; j++){
+                    grids[row * 4 + j].classList.toggle('expand');
                 }
-                grids[i].classList.toggle('expand');
+                //for the grids not in the same row, remove the expand class
+                for (let k = 0; k < grids.length; k++){
+                    if (Math.floor(k / 4) != row){
+                        grids[k].classList.remove('expand');
+                    }
+                }
             })
         }
-    }  
+    }
+                
+
+
+
+
     const btnAddToCart = () => {
         //This function will create a button for each product
         //When clicked, it will add the product to TheCart
@@ -727,7 +494,7 @@ function BuildPC({setCartItems, cartItems}) {
         // if the there is something in localStorage, update it with the new added items
         if(localStorage.getItem('cart')!==null){
             let cart = JSON.parse(localStorage.getItem('cart'));
-            setCartItems(cart);
+            //setCartItems(cart);
         }
     }, [cartItems]);
     return (

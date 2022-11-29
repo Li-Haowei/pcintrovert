@@ -156,7 +156,7 @@ a, button {
 }
 /* each grid can be toggled to expand */
 .four-by-four-grids > .grid.expand {
-    height: 30vh;
+    height: 60vh;
     width: 20vw;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
@@ -169,4 +169,7 @@ a, button {
 .introduction-in-store > h1 > img {
   height: 50px;
   width: 50px;
+}
+.product-specs, .product-description{
+  font-size: 0.7rem;
 }
