@@ -23,13 +23,17 @@ class MainPage extends React.Component{
         // go to '/about'
         window.open("/about", "_self");
     };
+    goToCurrentBuild = () => {
+        // go to '/currentbuild'
+        window.open("/currentbuild", "_self");
+    };
     render(){
         return (
             <div className="mainpage">
                 <div className="build-pc" onClick={this.goToBuildPC}>
                     <h1>Build PC</h1>
                 </div>
-                <div className="view-build">
+                <div className="view-build" onClick={this.goToCurrentBuild}>
                     <h1>View Build</h1>
                 </div>
                 <div className="check-out" onClick={this.goToCart}>

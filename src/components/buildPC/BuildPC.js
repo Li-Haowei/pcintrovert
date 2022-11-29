@@ -186,6 +186,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-price">${Cases[i].Price}</p>
                         <div class="product-specs">${Cases[i].Specs}</div>
                         <a href="${Cases[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">Case</div>
                     </div>
                 </div>
                 `
@@ -202,12 +203,13 @@ function BuildPC({setCartItems, cartItems}) {
             Coolings[i].Specs = "<ul>" + Coolings[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${Coolings[i].Picture}" alt="case">
+                    <img src="${Coolings[i].Picture}" alt="Cooling">
                     <div class="product-info">
                         <p class="product-name">${Coolings[i].Name}</p>
                         <p class="product-price">${Coolings[i].Price}</p>
                         <div class="product-specs">${Coolings[i].Specs}</div>
                         <a href="${Coolings[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">Cooling</div>
                     </div>
                 </div>
                 `
@@ -267,12 +269,13 @@ function BuildPC({setCartItems, cartItems}) {
             CPUs[i].Specs = "<ul>" + CPUs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${CPUs[i].Picture}" alt="case">
+                    <img src="${CPUs[i].Picture}" alt="CPUs">
                     <div class="product-info">
                         <p class="product-name">${CPUs[i].Name}</p>
                         <p class="product-price">${CPUs[i].Price}</p>
                         <div class="product-specs">${CPUs[i].Specs}</div>
                         <a href="${CPUs[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">CPU</div>
                     </div>
                 </div>
                 `
@@ -287,12 +290,13 @@ function BuildPC({setCartItems, cartItems}) {
             GPUs[i].Specs = "<ul>" + GPUs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${GPUs[i].Picture}" alt="case">
+                    <img src="${GPUs[i].Picture}" alt="GPUs">
                     <div class="product-info">
                         <p class="product-name">${GPUs[i].Name}</p>
                         <p class="product-price">${GPUs[i].Price}</p>
                         <div class="product-specs">${GPUs[i].Specs}</div>
                         <a href="${GPUs[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">GPU</div>
                     </div>
                 </div>
                 `
@@ -307,12 +311,13 @@ function BuildPC({setCartItems, cartItems}) {
             RAMs[i].Specs = "<ul>" + RAMs[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${RAMs[i].Picture}" alt="case">
+                    <img src="${RAMs[i].Picture}" alt="RAMs">
                     <div class="product-info">
                         <p class="product-name">${RAMs[i].Name}</p>
                         <p class="product-price">${RAMs[i].Price}</p>
                         <div class="product-specs">${RAMs[i].Specs}</div>
                         <a href="${RAMs[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">RAM</div>
                     </div>
                 </div>
                 `
@@ -327,12 +332,13 @@ function BuildPC({setCartItems, cartItems}) {
             Storages[i].Specs = "<ul>" + Storages[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${Storages[i].Picture}" alt="case">
+                    <img src="${Storages[i].Picture}" alt="Storages">
                     <div class="product-info">
                         <p class="product-name">${Storages[i].Name}</p>
                         <p class="product-price">${Storages[i].Price}</p>
                         <div class="product-specs">${Storages[i].Specs}</div>
                         <a href="${Storages[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">Storage</div>
                     </div>
                 </div>
                 `
@@ -347,12 +353,13 @@ function BuildPC({setCartItems, cartItems}) {
             Motherboards[i].Specs = "<ul>" + Motherboards[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${Motherboards[i].Picture}" alt="case">
+                    <img src="${Motherboards[i].Picture}" alt="Motherboards">
                     <div class="product-info">
                         <p class="product-name">${Motherboards[i].Name}</p>
                         <p class="product-price">${Motherboards[i].Price}</p>
                         <div class="product-specs">${Motherboards[i].Specs}</div>
                         <a href="${Motherboards[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">Motherboard</div>
                     </div>
                 </div>
                 `
@@ -367,12 +374,13 @@ function BuildPC({setCartItems, cartItems}) {
             PowerSupplies[i].Specs = "<ul>" + PowerSupplies[i].Specs.replace('[', '').replace(']', '').replace(/,/g, '') + "</ul>";
             shelf.innerHTML += `
                 <div class="grid">
-                    <img src="${PowerSupplies[i].Picture}" alt="case">
+                    <img src="${PowerSupplies[i].Picture}" alt="PowerSupplies">
                     <div class="product-info">
                         <p class="product-name">${PowerSupplies[i].Name}</p>
                         <p class="product-price">${PowerSupplies[i].Price}</p>
                         <div class="product-specs">${PowerSupplies[i].Specs}</div>
                         <a href="${PowerSupplies[i].Link}"><button class="product-description">View More</button></a>
+                        <div class="category">Power Supply</div>
                     </div>
                 </div>
                 `
@@ -494,9 +502,11 @@ function BuildPC({setCartItems, cartItems}) {
                 let name = product.getElementsByClassName('product-name')[0].innerHTML;
                 let price = product.getElementsByClassName('product-price')[0].innerHTML;
                 let image = grids[i].getElementsByTagName('img')[0].src;
+                let specs = product.getElementsByClassName('product-specs')[0].innerHTML;
+                let category = document.getElementsByClassName('category')[0].innerHTML;
                 // generate a random id for each product
                 let id = Math.floor(Math.random() * 100000000);
-                setCartItems( arr => [...arr, {name, price, image, id}]);
+                setCartItems( arr => [...arr, {name, price, image, id, specs, category}]);
                 toast('Added to Cart');
             }
             product.appendChild(btn);

@@ -214,3 +214,6 @@ const toast = (message) => {
 #toast.show {
     opacity: 1;
 }
+.category {
+  display: none;
+}

@@ -6,17 +6,6 @@ function Cart() {
     const localStorageCart = localStorage.getItem('cart');
     const cart = JSON.parse(localStorageCart);
 
-    // /* remove a specific item from the cart, and update the localStorage */
-    // const removeItem = (item) => {
-    //     const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
-    //     localStorage.setItem('cart', JSON.stringify(newCart));
-    //     window.location.reload();
-    // }
-
-
-
-    
-
     function loadCart() {
         if (cart) {
             return cart.map((item) => {
