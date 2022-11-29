@@ -16,7 +16,7 @@ function CurrentBuild() {
     const localStorageCart = localStorage.getItem('cart');
     const cart = JSON.parse(localStorageCart);
 
-    console.log(cart);
+    //console.log(cart);
 
     function loadCurrentBuild() {
         if (cart) {
@@ -71,6 +71,15 @@ function CurrentBuild() {
                 </tr>
             )
         })
+        if (CPUs_List.length === 0) {
+            CPUs_List = (
+                <tr>
+                    <td>CPU</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let GPUs_List = GPUs.map((GPU) => {
             return (
                 <tr>
@@ -81,6 +90,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (GPUs_List.length === 0) {
+            GPUs_List = (
+                <tr>
+                    <td>GPU</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let RAMs_List = RAMs.map((RAM) => {
             return (
                 <tr>
@@ -91,6 +109,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (RAMs_List.length === 0) {
+            RAMs_List = (
+                <tr>
+                    <td>RAM</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let Motherboards_List = Motherboards.map((Motherboard) => {
             return (
                 <tr>
@@ -101,6 +128,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (Motherboards_List.length === 0) {
+            Motherboards_List = (
+                <tr>
+                    <td>Motherboard</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let Storages_List = Storages.map((Storage) => {
             return (
                 <tr>
@@ -111,6 +147,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (Storages_List.length === 0) {
+            Storages_List = (
+                <tr>
+                    <td>Storage</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let Cases_List = Cases.map((Case) => {
             return (
                 <tr>
@@ -121,6 +166,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (Cases_List.length === 0) {
+            Cases_List = (
+                <tr>
+                    <td>Case</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let PowerSupplies_List = PowerSupplies.map((PowerSupply) => {
             return (
                 <tr>
@@ -131,6 +185,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (PowerSupplies_List.length === 0) {
+            PowerSupplies_List = (
+                <tr>
+                    <td>Power Supply</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         let Coolings_List = Coolings.map((Cooling) => {
             return (
                 <tr>
@@ -141,6 +204,15 @@ function CurrentBuild() {
             )
         }
         )
+        if (Coolings_List.length === 0) {
+            Coolings_List = (
+                <tr>
+                    <td>Cooling</td>
+                    <td>None</td>
+                    <td>None</td>
+                </tr>
+            )
+        }
         return (
             <table>
                 <thead>
@@ -179,11 +251,11 @@ function CurrentBuild() {
     }
     return (
         <div className='current-build'>
-            <h1>Current Build</h1>
+            <h1><span>Current Build</span></h1>
             <div className="current-build-table">
-            
             {createTable()}
             </div>
+            <div className='summary'></div>
         </div>
     );
 }

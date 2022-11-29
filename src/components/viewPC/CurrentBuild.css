@@ -1,0 +1,42 @@
+.current-build {
+    background-color: var(--cyber-black);
+    margin: 0;
+    padding: 0;
+    height: calc(100vh - 46px);
+}
+.current-build > h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--cyber-white);
+    padding: 10px 0;
+}
+.current-build > h1 > span {
+    background-color: var(--cyber-purple);
+    padding: 10px 30px;
+    /* trapeze shape */
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+}
+.current-build-table {
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    /*border box*/
+    box-sizing: border-box;
+    padding: 0 20vw;
+}
+.current-build-table > table {
+    border-collapse: collapse;
+    width: 100%;
+    color: var(--cyber-white);
+}
+.current-build-table > table > thead > tr > th {
+    border: 1px solid var(--cyber-purple);
+    padding: 5px;
+    text-align: center;
+}
+.current-build-table > table > tbody > tr > td {
+    border: 1px solid var(--cyber-purple);
+    padding: 5px;
+    text-align: center;
+}
