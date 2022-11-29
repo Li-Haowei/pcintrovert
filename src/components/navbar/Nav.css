@@ -45,7 +45,7 @@ nav {
 }
 /* move the last element in nav to its right */
 .nav-li:last-child {
-    position: absolute;
+    position: fixed;
     right: 15px;
     top: -6px;
 }
@@ -53,17 +53,17 @@ nav {
 .nav-li:first-child {
     left: 0;
     top: 0;
-    position: absolute;
+    position: fixed;
 }
 /* second element in nav */
 .nav-li:nth-child(2) {
-    position: absolute;
+    position: fixed;
     left: 50vw;
     top: 0;
 }
 /*second to last element will be next to the last element*/
 .nav-li:nth-last-child(2) {
-    position: absolute;
+    position: fixed;
     right: 60px;
     top: -6px;
 }

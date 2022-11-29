@@ -1,8 +1,7 @@
 .current-build {
     background-color: var(--cyber-black);
     margin: 0;
-    padding: 0;
-    height: calc(100vh - 46px);
+    padding: 20px 0 20px 0;
 }
 .current-build > h1 {
     margin: 0;
@@ -13,7 +12,7 @@
 }
 .current-build > h1 > span {
     background-color: var(--cyber-purple);
-    padding: 10px 30px;
+    padding: 14px 30px;
     /* trapeze shape */
     clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
 }
@@ -31,12 +30,12 @@
     color: var(--cyber-white);
 }
 .current-build-table > table > thead > tr > th {
-    border: 1px solid var(--cyber-purple);
+    border: 5px solid var(--cyber-purple);
     padding: 5px;
     text-align: center;
 }
 .current-build-table > table > tbody > tr > td {
-    border: 1px solid var(--cyber-purple);
+    border: 5px solid var(--cyber-purple);
     padding: 5px;
     text-align: center;
 }

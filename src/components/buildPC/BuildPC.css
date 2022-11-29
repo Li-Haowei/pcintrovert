@@ -167,10 +167,9 @@ a, button {
 }
 /* each grid can be toggled to expand */
 .four-by-four-grids > .grid.expand {
-    height: 80vh;
+    height: 100vh;
     width: 20vw;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);  
 }
 
 .introduction-in-store {
