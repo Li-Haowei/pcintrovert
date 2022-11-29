@@ -185,7 +185,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${Cases[i].Name}</p>
                         <p class="product-price">${Cases[i].Price}</p>
                         <div class="product-specs">${Cases[i].Specs}</div>
-                        <p class="product-description">${Cases[i].Link}</p>
+                        <a href="${Cases[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -207,7 +207,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${Coolings[i].Name}</p>
                         <p class="product-price">${Coolings[i].Price}</p>
                         <div class="product-specs">${Coolings[i].Specs}</div>
-                        <p class="product-description">${Coolings[i].Link}</p>
+                        <a href="${Coolings[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -272,7 +272,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${CPUs[i].Name}</p>
                         <p class="product-price">${CPUs[i].Price}</p>
                         <div class="product-specs">${CPUs[i].Specs}</div>
-                        <p class="product-description">${CPUs[i].Link}</p>
+                        <a href="${CPUs[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -292,7 +292,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${GPUs[i].Name}</p>
                         <p class="product-price">${GPUs[i].Price}</p>
                         <div class="product-specs">${GPUs[i].Specs}</div>
-                        <p class="product-description">${GPUs[i].Link}</p>
+                        <a href="${GPUs[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -312,7 +312,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${RAMs[i].Name}</p>
                         <p class="product-price">${RAMs[i].Price}</p>
                         <div class="product-specs">${RAMs[i].Specs}</div>
-                        <p class="product-description">${RAMs[i].Link}</p>
+                        <a href="${RAMs[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -332,7 +332,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${Storages[i].Name}</p>
                         <p class="product-price">${Storages[i].Price}</p>
                         <div class="product-specs">${Storages[i].Specs}</div>
-                        <p class="product-description">${Storages[i].Link}</p>
+                        <a href="${Storages[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -352,7 +352,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${Motherboards[i].Name}</p>
                         <p class="product-price">${Motherboards[i].Price}</p>
                         <div class="product-specs">${Motherboards[i].Specs}</div>
-                        <p class="product-description">${Motherboards[i].Link}</p>
+                        <a href="${Motherboards[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -372,7 +372,7 @@ function BuildPC({setCartItems, cartItems}) {
                         <p class="product-name">${PowerSupplies[i].Name}</p>
                         <p class="product-price">${PowerSupplies[i].Price}</p>
                         <div class="product-specs">${PowerSupplies[i].Specs}</div>
-                        <p class="product-description">${PowerSupplies[i].Link}</p>
+                        <a href="${PowerSupplies[i].Link}"><button class="product-description">View More</button></a>
                     </div>
                 </div>
                 `
@@ -450,6 +450,10 @@ function BuildPC({setCartItems, cartItems}) {
         let grids = document.getElementsByClassName('grid');
         for (let i = 0; i < grids.length; i++){
             grids[i].addEventListener('click', () => {
+                // if the grid is already expanded, then do nothing
+                if (grids[i].classList.contains('expand')){
+                    return;
+                }
                 let row = Math.floor(i / 4);
                 for (let j = 0; j < 4; j++){
                     grids[row * 4 + j].classList.toggle('expand');
@@ -463,7 +467,15 @@ function BuildPC({setCartItems, cartItems}) {
             })
         }
     }
-                
+
+    const toast = (message) => {
+        let toast = document.getElementById('toast');
+        toast.innerHTML = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 700);
+    }
 
 
 
@@ -482,21 +494,30 @@ function BuildPC({setCartItems, cartItems}) {
                 let name = product.getElementsByClassName('product-name')[0].innerHTML;
                 let price = product.getElementsByClassName('product-price')[0].innerHTML;
                 let image = grids[i].getElementsByTagName('img')[0].src;
-                setCartItems( arr => [...arr, {name, price, image}]);
+                // generate a random id for each product
+                let id = Math.floor(Math.random() * 100000000);
+                setCartItems( arr => [...arr, {name, price, image, id}]);
+                toast('Added to Cart');
             }
             product.appendChild(btn);
         }
     }
-    /* if there is a change in cartItems, log it */
+
+    // update the cart items
     useEffect(() => {
         if(cartItems.length!==0) localStorage.setItem('cart', JSON.stringify(cartItems));
-
-        // if the there is something in localStorage, update it with the new added items
+    }, [cartItems]);
+    useEffect(() => {
         if(localStorage.getItem('cart')!==null){
             let cart = JSON.parse(localStorage.getItem('cart'));
-            //setCartItems(cart);
+            setCartItems(cart);
         }
-    }, [cartItems]);
+    }, []);
+
+
+
+
+
     return (
             <div className="buildPc">
 
@@ -573,6 +594,7 @@ function BuildPC({setCartItems, cartItems}) {
                 </ul>
             </div>
             <div id="wrapperContent">
+                <div id="toast"></div>
                 <div className='products four-by-four-grids'>
                     <div className='introduction-in-store'>
                         <h1>Welcome to our store <img src={logo}></img></h1>

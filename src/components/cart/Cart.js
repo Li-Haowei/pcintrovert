@@ -29,7 +29,12 @@ function Cart() {
                             <p>{item.price}</p>
                             <button className="remove-button" onClick={
                                 () => {
-                                    const newCart = cart.filter((cartItem) => cartItem.name !== item.name);
+                                    // const newCart = cart.filter((cartItem) => cartItem.name !== item.name);
+                                    // localStorage.setItem('cart', JSON.stringify(newCart));
+                                    // window.location.reload();
+
+                                    //remove based on its unique id
+                                    const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
                                     localStorage.setItem('cart', JSON.stringify(newCart));
                                     window.location.reload();
                                 }
@@ -43,11 +48,12 @@ function Cart() {
     function calculateTotal() {
         if (cart) {
             let total = 0;
-            cart.forEach((item) => {
-                //item.price to number before summation; example: $1,103.00 to 1103, $149.99 to 149.99
+            cart.forEach((item) => {         
                 total += Number(item.price.replace(/[^0-9.-]+/g, ""));
+                
             })
-            return total;
+            // if item.price is 19.999, trim it to 19.99, or $771.9425999999999 to 771.94
+            return total.toFixed(2);
         }
     }
     return (
