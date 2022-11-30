@@ -563,11 +563,6 @@ function BuildPC({setCartItems, cartItems}) {
     }
 
 
-    const addAllToCart = () => {
-        //add everything in className="featured-product-components" to cart
-        
-    }
-
     const btnAddToCart = () => {
         //This function will create a button for each product
         //When clicked, it will add the product to TheCart
@@ -593,6 +588,95 @@ function BuildPC({setCartItems, cartItems}) {
             product.appendChild(btn);
         }
     }
+
+
+    const btnAddAllToCart = () => {
+        // for all button className=".addAllToCart", add onclick event listener
+        let addAllToCart = document.getElementsByClassName('.addAllToCart');
+        let components = document.getElementsByClassName('featured-product-components');
+        for (let i = 0; i < addAllToCart.length; i++){
+            addAllToCart[i].classList.add('clicked');
+            addAllToCart[i].addEventListener('click', () => {
+                // make sure this function is only called once per click
+                if (addAllToCart[i].classList.contains('clicked')){
+                    console.log(i);
+                    // get all compoents from components[i]
+                    let CPUcomponent = components[i].getElementsByClassName('featured-product-CPU')[0];
+                    let GPUcomponent = components[i].getElementsByClassName('featured-product-GPU')[0];
+                    let RAMcomponent = components[i].getElementsByClassName('featured-product-RAM')[0];
+                    let Motherboardcomponent = components[i].getElementsByClassName('featured-product-Motherboard')[0];
+                    let Storagecomponent = components[i].getElementsByClassName('featured-product-Storage')[0];
+                    let Casecomponent = components[i].getElementsByClassName('featured-product-Case')[0];
+                    let PowerSupplycomponent = components[i].getElementsByClassName('featured-product-PowerSupply')[0];
+                    let Coolingcomponent = components[i].getElementsByClassName('featured-product-Cooling')[0];
+
+                    // take innerText of each component, translate to json
+                    let CPUJSON = JSON.parse("{"+CPUcomponent.innerText+"}");
+                    let GPUJSON = JSON.parse("{"+GPUcomponent.innerText+"}");
+                    let RAMJSON = JSON.parse("{"+RAMcomponent.innerText+"}");
+                    let MotherboardJSON = JSON.parse("{"+Motherboardcomponent.innerText+"}");
+                    let StorageJSON = JSON.parse("{"+Storagecomponent.innerText+"}");
+                    let CaseJSON = JSON.parse("{"+Casecomponent.innerText+"}");
+                    let PowerSupplyJSON = JSON.parse("{"+PowerSupplycomponent.innerText+"}");
+                    let CoolingJSON = JSON.parse("{"+Coolingcomponent.innerText+"}");
+
+                    let jsonList = [CPUJSON, GPUJSON, RAMJSON, MotherboardJSON, StorageJSON, CaseJSON, PowerSupplyJSON, CoolingJSON];
+                    for (let j = 0; j < jsonList.length; j++){
+                        helperAddAllToCart(jsonList[j], j);
+                    }
+
+
+
+                    toast('All items added to Cart');
+                    // remove clicked class from button
+                    addAllToCart[i].classList.remove('clicked');
+                }
+            })
+        }
+    }
+
+    function helperAddAllToCart(theJson, i){
+        let name = theJson.Name;
+        let price = theJson.Price;
+        let image = theJson.Picture;
+        let specs = theJson.Specs;
+        // switch for category
+        let category = "";
+        switch (i){
+            case 0:
+                category = "CPU";
+                break;
+            case 1:
+                category = "GPU";
+                break;
+            case 2:
+                category = "RAM";
+                break;
+            case 3:
+                category = "Motherboard";
+                break;
+            case 4:
+                category = "Storage";
+                break;
+            case 5:
+                category = "Case";
+                break;
+            case 6:
+                category = "Power Supply";
+                break;
+            case 7:
+                category = "Cooling";
+                break;
+        }
+        let id = Math.floor(Math.random() * 100000000);
+        setCartItems( arr => [...arr, {name, price, image, id, specs, category}]);
+    }
+
+
+    // call btnAddAllToCart() only once when page loads
+    useEffect(() => {
+        btnAddAllToCart();
+    }, [])
 
     // update the cart items
     useEffect(() => {
@@ -697,7 +781,7 @@ function BuildPC({setCartItems, cartItems}) {
                                     <h3>Budget Build</h3>
                                     <div>
                                         <p> Total: 531.88</p>
-                                        <button onClick={addAllToCart()}>Add to Cart</button>
+                                        <button className=".addAllToCart">Add to Cart</button>
                                     </div>
                                     <p>For people who with limited budget</p>
                                     <ul>
@@ -773,7 +857,7 @@ function BuildPC({setCartItems, cartItems}) {
                                     <h3>Intro Build</h3>
                                     <div>
                                         <p> Total: 944.93</p>
-                                        <button onClick={addAllToCart()}>Add to Cart</button>
+                                        <button className=".addAllToCart">Add to Cart</button>
                                     </div>
                                     <p>For people who are just into PC building world</p>
                                     <ul>
@@ -849,7 +933,7 @@ function BuildPC({setCartItems, cartItems}) {
                                     <h3>Median Build</h3>
                                     <div>
                                         <p> Total: 1510.93</p>
-                                        <button onClick={addAllToCart()}>Add to Cart</button>
+                                        <button className=".addAllToCart">Add to Cart</button>
                                     </div>
                                     <p>For people who are into PC world with some money</p>
                                     <ul>
@@ -927,7 +1011,7 @@ function BuildPC({setCartItems, cartItems}) {
                                     <h3>Pro Build</h3>
                                     <div>
                                         <p> Total: 2658.90</p>
-                                        <button onClick={addAllToCart()}>Add to Cart</button>
+                                        <button className=".addAllToCart">Add to Cart</button>
                                     </div>
                                     <p>For people who are competitive PC builders</p>
                                     <ul>
@@ -1001,7 +1085,7 @@ function BuildPC({setCartItems, cartItems}) {
                                     <h3>Ultra Build</h3>
                                     <div>
                                         <p> Total: 5349.90</p>
-                                        <button onClick={addAllToCart()}>Add to Cart</button>
+                                        <button className=".addAllToCart">Add to Cart</button>
                                     </div>
                                     <p>For people who want to be the alphas</p>
                                     <ul>

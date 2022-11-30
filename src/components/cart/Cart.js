@@ -5,12 +5,15 @@ import './Cart.css';
 function Cart() {
     const localStorageCart = localStorage.getItem('cart');
     const cart = JSON.parse(localStorageCart);
-
+    console.log(cart);
     function loadCart() {
         if (cart) {
             return cart.map((item) => {
                 // price looks like "$229.99&nbsp;–", "$159.99&nbsp;(15 Offers)–", make it $229.99, $159.99
-                const price = item.price.split('&nbsp')[0];
+                let price = 0;
+                if(item.price !== undefined) {
+                    price = item.price.split('&nbsp')[0];
+                }
                 return (
                     <div className="cart-item">
                         <img src={item.image} alt={item.name} />
@@ -39,13 +42,18 @@ function Cart() {
     function calculateTotal() {
         if (cart) {
             let total = 0;
-            cart.forEach((item) => {         
-                total += Number(item.price.replace(/[^0-9.-]+/g, ""));
-                
+            cart.forEach((item) => {
+                if(item.price !== undefined) {         
+                    total += Number(item.price.replace(/[^0-9.-]+/g, ""));
+                }
             })
             // if item.price is 19.999, trim it to 19.99, or $771.9425999999999 to 771.94
             return total.toFixed(2);
         }
+    }
+    function removeAll() {
+        localStorage.removeItem('cart');
+        window.location.reload();
     }
     return (
         <div className='Cart'>
