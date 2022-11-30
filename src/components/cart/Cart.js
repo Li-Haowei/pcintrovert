@@ -9,13 +9,15 @@ function Cart() {
     function loadCart() {
         if (cart) {
             return cart.map((item) => {
+                // price looks like "$229.99&nbsp;–", "$159.99&nbsp;(15 Offers)–", make it $229.99, $159.99
+                const price = item.price.split('&nbsp')[0];
                 return (
                     <div className="cart-item">
                         <img src={item.image} alt={item.name} />
                         <div className="cart-item-details">
                             <h3>{item.name}</h3>
                             <p>{item.description}</p>
-                            <p>{item.price}</p>
+                            <p>{price}</p>
                             <button className="remove-button" onClick={
                                 () => {
                                     // const newCart = cart.filter((cartItem) => cartItem.name !== item.name);
@@ -52,7 +54,7 @@ function Cart() {
             {loadCart()}
             </div>
             <div className="cart-total">
-                <h3>Total: ${calculateTotal()}</h3>
+                <h3 id="price">Total: ${calculateTotal()}</h3>
             </div>
         </div>
     );

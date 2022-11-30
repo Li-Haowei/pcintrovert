@@ -67,3 +67,7 @@ nav {
     right: 60px;
     top: -6px;
 }
+#home-button {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

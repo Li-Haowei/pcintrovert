@@ -65,27 +65,27 @@ function CurrentBuild() {
         let CPUs_List = CPUs.map((CPU) => {
             return (
                 <tr>
-                    <td>CPU</td>
-                    <td>{CPU.name}</td>
-                    <td>{ReactHtmlParser(CPU.specs)}</td>
+                    <td className="completed">CPU</td>
+                    <td className="completed">{CPU.name}</td>
+                    <td className="completed">{ReactHtmlParser(CPU.specs)}</td>
                 </tr>
             )
         })
         if (CPUs_List.length === 0) {
             CPUs_List = (
                 <tr>
-                    <td>CPU</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">CPU</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let GPUs_List = GPUs.map((GPU) => {
             return (
                 <tr>
-                    <td>GPU</td>
-                    <td>{GPU.name}</td>
-                    <td>{ReactHtmlParser(GPU.specs)}</td>
+                    <td className="completed">GPU</td>
+                    <td className="completed">{GPU.name}</td>
+                    <td className="completed">{ReactHtmlParser(GPU.specs)}</td>
                 </tr>
             )
         }
@@ -93,18 +93,18 @@ function CurrentBuild() {
         if (GPUs_List.length === 0) {
             GPUs_List = (
                 <tr>
-                    <td>GPU</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">GPU</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let RAMs_List = RAMs.map((RAM) => {
             return (
                 <tr>
-                    <td>RAM</td>
-                    <td>{RAM.name}</td>
-                    <td>{ReactHtmlParser(RAM.specs)}</td>
+                    <td className="completed">RAM</td>
+                    <td className="completed">{RAM.name}</td>
+                    <td className="completed">{ReactHtmlParser(RAM.specs)}</td>
                 </tr>
             )
         }
@@ -112,18 +112,18 @@ function CurrentBuild() {
         if (RAMs_List.length === 0) {
             RAMs_List = (
                 <tr>
-                    <td>RAM</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">RAM</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let Motherboards_List = Motherboards.map((Motherboard) => {
             return (
                 <tr>
-                    <td>Motherboard</td>
-                    <td>{Motherboard.name}</td>
-                    <td>{ReactHtmlParser(Motherboard.specs)}</td>
+                    <td className="completed">Motherboard</td>
+                    <td className="completed">{Motherboard.name}</td>
+                    <td className="completed">{ReactHtmlParser(Motherboard.specs)}</td>
                 </tr>
             )
         }
@@ -131,18 +131,18 @@ function CurrentBuild() {
         if (Motherboards_List.length === 0) {
             Motherboards_List = (
                 <tr>
-                    <td>Motherboard</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">Motherboard</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let Storages_List = Storages.map((Storage) => {
             return (
                 <tr>
-                    <td>Storage</td>
-                    <td>{Storage.name}</td>
-                    <td>{ReactHtmlParser(Storage.specs)}</td>
+                    <td className="completed">Storage</td>
+                    <td className="completed">{Storage.name}</td>
+                    <td className="completed">{ReactHtmlParser(Storage.specs)}</td>
                 </tr>
             )
         }
@@ -150,18 +150,18 @@ function CurrentBuild() {
         if (Storages_List.length === 0) {
             Storages_List = (
                 <tr>
-                    <td>Storage</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">Storage</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let Cases_List = Cases.map((Case) => {
             return (
                 <tr>
-                    <td>Case</td>
-                    <td>{Case.name}</td>
-                    <td>{ReactHtmlParser(Case.specs)}</td>
+                    <td className="completed">Case</td>
+                    <td className="completed">{Case.name}</td>
+                    <td className="completed">{ReactHtmlParser(Case.specs)}</td>
                 </tr>
             )
         }
@@ -169,18 +169,18 @@ function CurrentBuild() {
         if (Cases_List.length === 0) {
             Cases_List = (
                 <tr>
-                    <td>Case</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">Case</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let PowerSupplies_List = PowerSupplies.map((PowerSupply) => {
             return (
                 <tr>
-                    <td>Power Supply</td>
-                    <td>{PowerSupply.name}</td>
-                    <td>{ReactHtmlParser(PowerSupply.specs)}</td>
+                    <td className="completed">Power Supply</td>
+                    <td className="completed">{PowerSupply.name}</td>
+                    <td className="completed">{ReactHtmlParser(PowerSupply.specs)}</td>
                 </tr>
             )
         }
@@ -188,18 +188,18 @@ function CurrentBuild() {
         if (PowerSupplies_List.length === 0) {
             PowerSupplies_List = (
                 <tr>
-                    <td>Power Supply</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">Power Supply</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }
         let Coolings_List = Coolings.map((Cooling) => {
             return (
                 <tr>
-                    <td>Cooling</td>
-                    <td>{Cooling.name}</td>
-                    <td>{ReactHtmlParser(Cooling.specs)}</td>
+                    <td className="completed">Cooling</td>
+                    <td className="completed">{Cooling.name}</td>
+                    <td className="completed">{ReactHtmlParser(Cooling.specs)}</td>
                 </tr>
             )
         }
@@ -207,9 +207,9 @@ function CurrentBuild() {
         if (Coolings_List.length === 0) {
             Coolings_List = (
                 <tr>
-                    <td>Cooling</td>
-                    <td>None</td>
-                    <td>None</td>
+                    <td className="none">Cooling</td>
+                    <td className="none">Missing Components</td>
+                    <td className="none">Missing Components</td>
                 </tr>
             )
         }

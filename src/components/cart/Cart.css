@@ -29,6 +29,8 @@
     display: grid;
     grid-template-columns: 1fr 7fr;
     grid-template-rows: 1fr;
+    /* space between the grid items */
+    grid-gap: 5vw;
 }
 .cart-item > img {
     /*border box*/
@@ -47,4 +49,33 @@
 .cart-total {
     /*float right*/
     float: right;
+}
+#price {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background-color: var(--cyber-darkblue);
+    color: var(--cyber-white);
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+/* #price has a glowing edges */
+#price {
+    box-shadow: 0 0 10px var(--cyber-red);
+}
+/* children of cart-item-details should have paddings top and bottom of 10px */
+.cart-item-details > * {
+    padding: 5px 0;
+}
+
+.cart-item-details > button {
+    /* button */
+    width: 10%;
+    padding: 5px;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--cyber-lavender);
+    cursor: pointer;
+    font-weight: 900;
 }

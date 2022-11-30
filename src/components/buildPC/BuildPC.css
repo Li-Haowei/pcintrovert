@@ -173,7 +173,7 @@ a, button {
 }
 
 .introduction-in-store {
-  padding: 20vh;
+  padding: 0 1rem;
   width: 80vw;
   height: 70vh;
 }
@@ -215,4 +215,52 @@ const toast = (message) => {
 }
 .category {
   display: none;
+}
+
+.featured-products {
+  /* a horizontal scroll flex container */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+  padding: 0 1rem;
+  /* height will be wrap content */
+}
+
+.featured-product {
+  /* a flex item */
+  flex: 0 0 auto;
+  width: 20vw;
+  margin: 0 1rem;
+  height: 100%;
+  border: 1px solid var(--cyber-darkblue);
+  background: var(--cyber-darkblue);
+  color: var(--cyber-white);
+  font-size: 1.5em;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  transition: all 0.5s ease-out 0s;
+  border: 2px solid var(--cyber-white);
+}
+.featured-product-components > div {
+  display: none;
+}
+.featured-product > * {
+   text-align: left;
+   font-size: 16px;
+}
+/* first div children of featured-product will be a 1x2 grid */
+.featured-product > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 10px;
+  grid-auto-flow: dense;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-black);
+}
+.featured-product > div > p {
+  padding: 0 10px;
 }
