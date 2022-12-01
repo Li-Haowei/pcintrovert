@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/pcintrovert/static/css/main.67499ecc.css",
-    "main.js": "/pcintrovert/static/js/main.faed0249.js",
-    "static/js/787.0f037ede.chunk.js": "/pcintrovert/static/js/787.0f037ede.chunk.js",
-    "static/media/cart.png": "/pcintrovert/static/media/cart.52a7d233ba22af778a7e.png",
-    "static/media/mini-pc.jpg": "/pcintrovert/static/media/mini-pc.2bcc4ac06c40a29e1ce5.jpg",
-    "static/media/user-profile.png": "/pcintrovert/static/media/user-profile.fd86607fd1bfae219e99.png",
-    "index.html": "/pcintrovert/index.html",
-    "main.67499ecc.css.map": "/pcintrovert/static/css/main.67499ecc.css.map",
-    "main.faed0249.js.map": "/pcintrovert/static/js/main.faed0249.js.map",
-    "787.0f037ede.chunk.js.map": "/pcintrovert/static/js/787.0f037ede.chunk.js.map"
+    "main.css": "/static/css/main.67499ecc.css",
+    "main.js": "/static/js/main.ff13273e.js",
+    "static/js/787.0f037ede.chunk.js": "/static/js/787.0f037ede.chunk.js",
+    "static/media/cart.png": "/static/media/cart.52a7d233ba22af778a7e.png",
+    "static/media/mini-pc.jpg": "/static/media/mini-pc.2bcc4ac06c40a29e1ce5.jpg",
+    "static/media/user-profile.png": "/static/media/user-profile.fd86607fd1bfae219e99.png",
+    "index.html": "/index.html",
+    "main.67499ecc.css.map": "/static/css/main.67499ecc.css.map",
+    "main.ff13273e.js.map": "/static/js/main.ff13273e.js.map",
+    "787.0f037ede.chunk.js.map": "/static/js/787.0f037ede.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67499ecc.css",
-    "static/js/main.faed0249.js"
+    "static/js/main.ff13273e.js"
   ]
 }
