@@ -37,7 +37,7 @@ const App = () => {
 
 function AppWrapper(){
   return (
-    <Router>
+    <Router basename="/pcintrovert">
       <Nav />
       <App />
     </Router>
