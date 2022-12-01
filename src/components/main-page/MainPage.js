@@ -12,19 +12,19 @@ import './MainPage.css';
 class MainPage extends React.Component{
     goToBuildPC = () => {
         // go to '/buildpc'
-        window.open("/buildpc", "_self");
+        window.open("/pcintrovert/buildpc", "_self");
     };
     goToCart = () => {
         // go to '/cart'
-        window.open("/cart", "_self");
+        window.open("/pcintrovert/cart", "_self");
     };
     goToAbout = () => {
         // go to '/about'
-        window.open("/about", "_self");
+        window.open("/pcintrovert/about", "_self");
     };
     goToCurrentBuild = () => {
         // go to '/currentbuild'
-        window.open("/currentbuild", "_self");
+        window.open("/pcintrovert/currentbuild", "_self");
     };
     render(){
         return (

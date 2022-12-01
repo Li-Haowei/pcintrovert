@@ -10,37 +10,51 @@ import React from 'react';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
-  useRoutes,
+  Route,
+  Routes,
+  useRoutes
 } from "react-router-dom";
+// import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+
 // if user is not logged in, show login page, else show the app page
 
-const LoginComponent = () => {
-  return (
-    <div className="App">
-      <Login />
-    </div>
-  );
-};
+// const LoginComponent = () => {
+//   return (
+//     <div className="App">
+//       <Login />
+//     </div>
+//   );
+// };
 
-const App = () => {
-  const [cartItems, setCartItems] = useState([]);
-  let routes = useRoutes([
-    { path: "/", element: <LoginComponent /> },
-    { path: "mainpage", element: <MainPage /> },
-    { path: "buildpc", element: <BuildPC setCartItems={setCartItems} cartItems={cartItems}/>},
-    { path: "cart", element: <Cart />},
-    { path: "about", element: <About />},
-    { path: "currentbuild", element: <CurrentBuild />},
-  ]);
-  return routes;
-};
+// const App = () => {
+//   const [cartItems, setCartItems] = useState([]);
+//   let routes = useRoutes([
+//     { path: "/pcintrovert", element: <LoginComponent /> },
+//     { path: "/pcintrovert/mainpage", element: <MainPage /> },
+//     { path: "/pcintrovert/buildpc", element: <BuildPC setCartItems={setCartItems} cartItems={cartItems}/>},
+//     { path: "/pcintrovert/cart", element: <Cart />},
+//     { path: "/pcintrovert/about", element: <About />},
+//     { path: "/pcintrovert/currentbuild", element: <CurrentBuild />},
+//   ]);
+//   return routes;
+// };
 
 function AppWrapper(){
+  const [cartItems, setCartItems] = useState([]);
   return (
-    <Router basename="/pcintrovert">
+      <>
       <Nav />
-      <App />
-    </Router>
+      <div className="App">
+      <Routes>
+      <Route exact path="/pcintrovert" element={<Login />}></Route>
+      <Route exact path="/pcintrovert/mainpage" element={<MainPage />}></Route>
+      <Route exact path="/pcintrovert/buildpc" element={<BuildPC setCartItems={setCartItems} cartItems={cartItems}/>}></Route>
+      <Route exact path="/pcintrovert/cart" element={<Cart />}></Route>
+      <Route exact path="/pcintrovert/about" element={<About />}></Route>
+      <Route exact path="/pcintrovert/currentbuild" element={<CurrentBuild />}></Route>
+      </Routes>
+      </div>
+      </>
   );
 }
 

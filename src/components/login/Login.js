@@ -31,7 +31,7 @@ class Login extends React.Component{
         // {email:'guestAcc@test.com', pwd:'guestAcc@test.com,isLoggedIn:true,isGuest:true}
         this.setState({email:' ', pwd:' ', isLoggedIn:true, isGuest:true});
         // go to '/mainpage'
-        window.open("/mainpage", "_self");
+        window.open("/pcintrovert/mainpage", "_self");
     };
 
 
