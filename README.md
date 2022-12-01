@@ -1,5 +1,5 @@
 # Introvert PC
-- This is a shopping website, which is a <strong>designed</strong> project website using React JS
+- This is a shopping website, which is a <strong>design</strong> project website using React JS
 # Goal of the project
 - For people to build their PC first time
 - For people who want to upgrade their PC
