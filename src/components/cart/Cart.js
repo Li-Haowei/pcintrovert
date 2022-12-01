@@ -51,10 +51,7 @@ function Cart() {
             return total.toFixed(2);
         }
     }
-    function removeAll() {
-        localStorage.removeItem('cart');
-        window.location.reload();
-    }
+    
     return (
         <div className='Cart'>
             <h1>Cart</h1>

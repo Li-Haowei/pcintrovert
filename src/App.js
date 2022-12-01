@@ -10,8 +10,6 @@ import React from 'react';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   useRoutes,
 } from "react-router-dom";
 // if user is not logged in, show login page, else show the app page
