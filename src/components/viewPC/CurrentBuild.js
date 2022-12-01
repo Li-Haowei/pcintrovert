@@ -18,45 +18,45 @@ function CurrentBuild() {
 
     //console.log(cart);
 
-    function loadCurrentBuild() {
-        if (cart) {
-            for (let i = 0; i < cart.length; i++) {
-                if (cart[i].category === 'CPU') {
-                    // append to CPUs
-                    setCPUs([...CPUs, cart[i]]);
-                }
-                if (cart[i].category === 'GPU') {
-                    // append to GPUs
-                    setGPUs([...GPUs, cart[i]]);
-                }
-                if (cart[i].category === 'RAM') {
-                    // append to RAMs
-                    setRAMs([...RAMs, cart[i]]);
-                }
-                if (cart[i].category === 'Motherboard') {
-                    // append to Motherboards
-                    setMotherboards([...Motherboards, cart[i]]);
-                }
-                if (cart[i].category === 'Storage') {
-                    // append to Storages
-                    setStorages([...Storages, cart[i]]);
-                }
-                if (cart[i].category === 'Case') {
-                    // append to Cases
-                    setCases([...Cases, cart[i]]);
-                }
-                if (cart[i].category === 'Power Supply') {
-                    // append to PowerSupplies
-                    setPowerSupplies([...PowerSupplies, cart[i]]);
-                }
-                if (cart[i].category === 'Cooling') {
-                    // append to Coolings
-                    setCoolings([...Coolings, cart[i]]);
+    useEffect(() => {
+        function loadCurrentBuild() {
+            if (cart) {
+                for (let i = 0; i < cart.length; i++) {
+                    if (cart[i].category === 'CPU') {
+                        // append to CPUs
+                        setCPUs([...CPUs, cart[i]]);
+                    }
+                    if (cart[i].category === 'GPU') {
+                        // append to GPUs
+                        setGPUs([...GPUs, cart[i]]);
+                    }
+                    if (cart[i].category === 'RAM') {
+                        // append to RAMs
+                        setRAMs([...RAMs, cart[i]]);
+                    }
+                    if (cart[i].category === 'Motherboard') {
+                        // append to Motherboards
+                        setMotherboards([...Motherboards, cart[i]]);
+                    }
+                    if (cart[i].category === 'Storage') {
+                        // append to Storages
+                        setStorages([...Storages, cart[i]]);
+                    }
+                    if (cart[i].category === 'Case') {
+                        // append to Cases
+                        setCases([...Cases, cart[i]]);
+                    }
+                    if (cart[i].category === 'Power Supply') {
+                        // append to PowerSupplies
+                        setPowerSupplies([...PowerSupplies, cart[i]]);
+                    }
+                    if (cart[i].category === 'Cooling') {
+                        // append to Coolings
+                        setCoolings([...Coolings, cart[i]]);
+                    }
                 }
             }
         }
-    }
-    useEffect(() => {
         loadCurrentBuild();
     }, []);
     function createTable(){
@@ -237,18 +237,6 @@ function CurrentBuild() {
 
     }
 
-    
-    function calculateTotal() {
-        if (cart) {
-            let total = 0;
-            cart.forEach((item) => {         
-                total += Number(item.price.replace(/[^0-9.-]+/g, ""));
-                
-            })
-            // if item.price is 19.999, trim it to 19.99, or $771.9425999999999 to 771.94
-            return total.toFixed(2);
-        }
-    }
     return (
         <div className='current-build'>
             <h1><span>Current Build</span></h1>

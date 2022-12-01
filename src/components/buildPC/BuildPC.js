@@ -3,12 +3,11 @@
 import React from 'react';
 import './BuildPC.css';
 import { useState, useEffect } from 'react';
-import menuIcon from '../../assets/menu.png';
 import logo from '../../assets/mini-pc.jpg';
 import axios from 'axios'; 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage"
+//import { getAnalytics } from "firebase/analytics";
+import { ref, getDownloadURL } from "firebase/storage"
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -22,7 +21,6 @@ const firebaseConfig = {
   };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const storage = getStorage(app, "gs://introvertpc-a8c64.appspot.com");
 
 function BuildPC({setCartItems, cartItems}) {
@@ -40,7 +38,7 @@ function BuildPC({setCartItems, cartItems}) {
     // every file has a Name, Price, i.e "$1,396.99\u00a0\u2013", Link, Picture
 
     useEffect(() => {
-        const storageRef = ref(storage);
+        //const storageRef = ref(storage);
         // get neweggCPU.json from storage
         getDownloadURL(ref(storage, 'neweggCPU.json'))
         .then((url) => {
@@ -151,13 +149,6 @@ function BuildPC({setCartItems, cartItems}) {
         document.getElementById("sidebar").classList.toggle('active');
         document.getElementById("wrapper").classList.toggle('active');
     }
-    /* if user click outside of sidebar, close sidebar */
-    const componentDidMount = () =>{
-        document.addEventListener('click', handleClickOutside, true);
-    }
-    const componentWillUnmount = () => {
-        document.removeEventListener('click', handleClickOutside, true);
-    }
     const handleClickOutside = (event) => {
         if (document.getElementById("sidebar").contains(event.target)){
             return;
@@ -167,6 +158,13 @@ function BuildPC({setCartItems, cartItems}) {
     }
     // call componentDidMount and componentWillUnmount
     useEffect(() => {
+        /* if user click outside of sidebar, close sidebar */
+        const componentDidMount = () =>{
+            document.addEventListener('click', handleClickOutside, true);
+        }
+        const componentWillUnmount = () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        }
         componentDidMount();
         return componentWillUnmount;
     }, []);
@@ -468,7 +466,7 @@ function BuildPC({setCartItems, cartItems}) {
                 }
                 //for the grids not in the same row, remove the expand class
                 for (let k = 0; k < grids.length; k++){
-                    if (Math.floor(k / 4) != row){
+                    if (Math.floor(k / 4) !== row){
                         grids[k].classList.remove('expand');
                     }
                 }
@@ -507,28 +505,28 @@ function BuildPC({setCartItems, cartItems}) {
         let AccessoriesInCart = false;
         let cart = JSON.parse(localStorage.getItem('cart'));
         for (let i = 0; i < cart.length; i++){
-            if (cart[i].category == 'CPU'){
+            if (cart[i].category === 'CPU'){
                 CPUInCart = true;
             }
-            if (cart[i].category == 'GPU'){
+            if (cart[i].category === 'GPU'){
                 GPUInCart = true;
             }
-            if (cart[i].category == 'RAM'){
+            if (cart[i].category === 'RAM'){
                 RAMInCart = true;
             }
-            if (cart[i].category == 'Motherboard'){
+            if (cart[i].category === 'Motherboard'){
                 MotherboardInCart = true;
             }
-            if (cart[i].category == 'Storage'){
+            if (cart[i].category === 'Storage'){
                 StorageInCart = true;
             }
-            if (cart[i].category == 'Case'){
+            if (cart[i].category === 'Case'){
                 CaseInCart = true;
             }
-            if (cart[i].category == 'Power Supply'){
+            if (cart[i].category === 'Power Supply'){
                 PowerSupplyInCart = true;
             }
-            if (cart[i].category == 'Accessories'){
+            if (cart[i].category === 'Accessories'){
                 AccessoriesInCart = true;
             }
         }
@@ -554,10 +552,13 @@ function BuildPC({setCartItems, cartItems}) {
         if (!PowerSupplyInCart){
             toastString += " Power Supply";
         }
-        if (toastString != ""){
+        if (toastString !== ""){
             toast("You are still missing: " + toastString);
         }else{
             toast("You are all set!");
+            if (AccessoriesInCart){
+                toast("Want some accessories?");
+            }
         }
 
     }
@@ -589,92 +590,88 @@ function BuildPC({setCartItems, cartItems}) {
         }
     }
 
-
-    const btnAddAllToCart = () => {
-        // for all button className=".addAllToCart", add onclick event listener
-        let addAllToCart = document.getElementsByClassName('.addAllToCart');
-        let components = document.getElementsByClassName('featured-product-components');
-        for (let i = 0; i < addAllToCart.length; i++){
-            addAllToCart[i].classList.add('clicked');
-            addAllToCart[i].addEventListener('click', () => {
-                // make sure this function is only called once per click
-                if (addAllToCart[i].classList.contains('clicked')){
-                    console.log(i);
-                    // get all compoents from components[i]
-                    let CPUcomponent = components[i].getElementsByClassName('featured-product-CPU')[0];
-                    let GPUcomponent = components[i].getElementsByClassName('featured-product-GPU')[0];
-                    let RAMcomponent = components[i].getElementsByClassName('featured-product-RAM')[0];
-                    let Motherboardcomponent = components[i].getElementsByClassName('featured-product-Motherboard')[0];
-                    let Storagecomponent = components[i].getElementsByClassName('featured-product-Storage')[0];
-                    let Casecomponent = components[i].getElementsByClassName('featured-product-Case')[0];
-                    let PowerSupplycomponent = components[i].getElementsByClassName('featured-product-PowerSupply')[0];
-                    let Coolingcomponent = components[i].getElementsByClassName('featured-product-Cooling')[0];
-
-                    // take innerText of each component, translate to json
-                    let CPUJSON = JSON.parse("{"+CPUcomponent.innerText+"}");
-                    let GPUJSON = JSON.parse("{"+GPUcomponent.innerText+"}");
-                    let RAMJSON = JSON.parse("{"+RAMcomponent.innerText+"}");
-                    let MotherboardJSON = JSON.parse("{"+Motherboardcomponent.innerText+"}");
-                    let StorageJSON = JSON.parse("{"+Storagecomponent.innerText+"}");
-                    let CaseJSON = JSON.parse("{"+Casecomponent.innerText+"}");
-                    let PowerSupplyJSON = JSON.parse("{"+PowerSupplycomponent.innerText+"}");
-                    let CoolingJSON = JSON.parse("{"+Coolingcomponent.innerText+"}");
-
-                    let jsonList = [CPUJSON, GPUJSON, RAMJSON, MotherboardJSON, StorageJSON, CaseJSON, PowerSupplyJSON, CoolingJSON];
-                    for (let j = 0; j < jsonList.length; j++){
-                        helperAddAllToCart(jsonList[j], j);
-                    }
-
-
-
-                    toast('All items added to Cart');
-                    // remove clicked class from button
-                    addAllToCart[i].classList.remove('clicked');
-                }
-            })
-        }
-    }
-
-    function helperAddAllToCart(theJson, i){
-        let name = theJson.Name;
-        let price = theJson.Price;
-        let image = theJson.Picture;
-        let specs = theJson.Specs;
-        // switch for category
-        let category = "";
-        switch (i){
-            case 0:
-                category = "CPU";
-                break;
-            case 1:
-                category = "GPU";
-                break;
-            case 2:
-                category = "RAM";
-                break;
-            case 3:
-                category = "Motherboard";
-                break;
-            case 4:
-                category = "Storage";
-                break;
-            case 5:
-                category = "Case";
-                break;
-            case 6:
-                category = "Power Supply";
-                break;
-            case 7:
-                category = "Cooling";
-                break;
-        }
-        let id = Math.floor(Math.random() * 100000000);
-        setCartItems( arr => [...arr, {name, price, image, id, specs, category}]);
-    }
-
-
     // call btnAddAllToCart() only once when page loads
     useEffect(() => {
+        function helperAddAllToCart(theJson, i){
+            let name = theJson.Name;
+            let price = theJson.Price;
+            let image = theJson.Picture;
+            let specs = theJson.Specs;
+            // switch for category
+            let category = "";
+            switch (i){
+                case 0:
+                    category = "CPU";
+                    break;
+                case 1:
+                    category = "GPU";
+                    break;
+                case 2:
+                    category = "RAM";
+                    break;
+                case 3:
+                    category = "Motherboard";
+                    break;
+                case 4:
+                    category = "Storage";
+                    break;
+                case 5:
+                    category = "Case";
+                    break;
+                case 6:
+                    category = "Power Supply";
+                    break;
+                case 7:
+                    category = "Cooling";
+                    break;
+            }
+            let id = Math.floor(Math.random() * 100000000);
+            setCartItems( arr => [...arr, {name, price, image, id, specs, category}]);
+        }
+        const btnAddAllToCart = () => {
+            // for all button className=".addAllToCart", add onclick event listener
+            let addAllToCart = document.getElementsByClassName('.addAllToCart');
+            let components = document.getElementsByClassName('featured-product-components');
+            for (let i = 0; i < addAllToCart.length; i++){
+                addAllToCart[i].classList.add('clicked');
+                addAllToCart[i].addEventListener('click', () => {
+                    // make sure this function is only called once per click
+                    if (addAllToCart[i].classList.contains('clicked')){
+                        console.log(i);
+                        // get all compoents from components[i]
+                        let CPUcomponent = components[i].getElementsByClassName('featured-product-CPU')[0];
+                        let GPUcomponent = components[i].getElementsByClassName('featured-product-GPU')[0];
+                        let RAMcomponent = components[i].getElementsByClassName('featured-product-RAM')[0];
+                        let Motherboardcomponent = components[i].getElementsByClassName('featured-product-Motherboard')[0];
+                        let Storagecomponent = components[i].getElementsByClassName('featured-product-Storage')[0];
+                        let Casecomponent = components[i].getElementsByClassName('featured-product-Case')[0];
+                        let PowerSupplycomponent = components[i].getElementsByClassName('featured-product-PowerSupply')[0];
+                        let Coolingcomponent = components[i].getElementsByClassName('featured-product-Cooling')[0];
+    
+                        // take innerText of each component, translate to json
+                        let CPUJSON = JSON.parse("{"+CPUcomponent.innerText+"}");
+                        let GPUJSON = JSON.parse("{"+GPUcomponent.innerText+"}");
+                        let RAMJSON = JSON.parse("{"+RAMcomponent.innerText+"}");
+                        let MotherboardJSON = JSON.parse("{"+Motherboardcomponent.innerText+"}");
+                        let StorageJSON = JSON.parse("{"+Storagecomponent.innerText+"}");
+                        let CaseJSON = JSON.parse("{"+Casecomponent.innerText+"}");
+                        let PowerSupplyJSON = JSON.parse("{"+PowerSupplycomponent.innerText+"}");
+                        let CoolingJSON = JSON.parse("{"+Coolingcomponent.innerText+"}");
+    
+                        let jsonList = [CPUJSON, GPUJSON, RAMJSON, MotherboardJSON, StorageJSON, CaseJSON, PowerSupplyJSON, CoolingJSON];
+                        for (let j = 0; j < jsonList.length; j++){
+                            helperAddAllToCart(jsonList[j], j);
+                        }
+    
+    
+    
+                        toast('All items added to Cart');
+                        // remove clicked class from button
+                        addAllToCart[i].classList.remove('clicked');
+                    }
+                })
+            }
+        }
         btnAddAllToCart();
     }, [])
 
@@ -772,7 +769,7 @@ function BuildPC({setCartItems, cartItems}) {
                 <div id="toast"></div>
                 <div className='products four-by-four-grids'>
                     <div className='introduction-in-store'>
-                        <h1>Welcome to our store <img src={logo}></img></h1>
+                        <h1>Welcome to our store <img src={logo} alt="logo"></img></h1>
                         <div className="featured">
                             <h2>Featured Products</h2>
                             <p>For people new to building PC, you can select a prebuilt and modify it</p>

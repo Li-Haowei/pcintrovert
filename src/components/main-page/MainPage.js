@@ -1,7 +1,6 @@
 /* this will be the main page of the app */
 import React from 'react';
 import './MainPage.css';
-import { useState, useEffect } from 'react';
   
   
 /* Main page will have 4 grids */
