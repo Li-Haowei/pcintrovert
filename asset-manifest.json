@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/pcintrovert/static/css/main.67499ecc.css",
-    "main.js": "/pcintrovert/static/js/main.7c1363ec.js",
+    "main.js": "/pcintrovert/static/js/main.851ba2f4.js",
     "static/js/787.0f037ede.chunk.js": "/pcintrovert/static/js/787.0f037ede.chunk.js",
     "static/media/cart.png": "/pcintrovert/static/media/cart.52a7d233ba22af778a7e.png",
     "static/media/mini-pc.jpg": "/pcintrovert/static/media/mini-pc.2bcc4ac06c40a29e1ce5.jpg",
     "static/media/user-profile.png": "/pcintrovert/static/media/user-profile.fd86607fd1bfae219e99.png",
     "index.html": "/pcintrovert/index.html",
     "main.67499ecc.css.map": "/pcintrovert/static/css/main.67499ecc.css.map",
-    "main.7c1363ec.js.map": "/pcintrovert/static/js/main.7c1363ec.js.map",
+    "main.851ba2f4.js.map": "/pcintrovert/static/js/main.851ba2f4.js.map",
     "787.0f037ede.chunk.js.map": "/pcintrovert/static/js/787.0f037ede.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67499ecc.css",
-    "static/js/main.7c1363ec.js"
+    "static/js/main.851ba2f4.js"
   ]
 }
