@@ -9,6 +9,8 @@
 
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -135,7 +137,7 @@
  */
 
 /**
- * @remix-run/router v1.0.4
+ * @remix-run/router v1.0.3
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -146,7 +148,7 @@
  */
 
 /**
- * React Router v6.4.4
+ * React Router v6.4.3
  *
  * Copyright (c) Remix Software Inc.
  *
