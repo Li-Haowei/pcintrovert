@@ -167,9 +167,24 @@ a, button {
 }
 /* each grid can be toggled to expand */
 .four-by-four-grids > .grid.expand {
-    height: 100vh;
+    height: auto;
     width: 20vw;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);  
+}
+
+/* expand with animation */
+.four-by-four-grids > .grid.expand {
+    transition: all 0.5s ease-out 0s;
+}
+@keyframes expand {
+    0% {
+        height: 30vh;
+        width: 20vw;
+    }
+    100% {
+        height: auto;
+        width: 20vw;
+    }
 }
 
 .introduction-in-store {
@@ -184,17 +199,6 @@ a, button {
 .product-specs, .product-description{
   font-size: 0.7rem;
 }
-
-/*
-const toast = (message) => {
-        let toast = document.getElementById('toast');
-        toast.innerHTML = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-*/
 
 #toast {
     position: absolute;
@@ -263,4 +267,47 @@ const toast = (message) => {
 }
 .featured-product > div > p {
   padding: 0 10px;
+}
+
+@media only screen and (max-width: 1200px){
+  /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px){
+/*Big smartphones [426px -> 600px]*/
+  h1 {
+    font-size: 1.5rem;
+  }
+  .products{
+    margin-left: 40px;
+  }
+  .featured-products {
+    padding: 0 0.5rem;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .featured-product {
+    width: 100%;
+  }
+  .four-by-four-grids {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding-right: 60px;
+    box-sizing: border-box;
+  }
+  .four-by-four-grids > .grid {
+    width: 100%;
+    height: 100%;
+  }
+  .four-by-four-grids > .grid.expand {
+    height: auto;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);  
+    transition: all 0.5s ease-out 0s;
+  }
+  .four-by-four-grids > .grid > img {
+    height: 30vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }

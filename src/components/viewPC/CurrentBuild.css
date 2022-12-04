@@ -1,6 +1,6 @@
 .current-build {
     background-color: var(--cyber-black);
-    height: calc(100vh - 46px);
+    height: auto;
     margin: 0;
     padding: 20px 0 20px 0;
 }
@@ -50,4 +50,22 @@
 /* the third column of table is aligned to the left */
 .current-build-table > table > tbody > tr > td {
     text-align: left;
+}
+@media only screen and (max-width: 600px){
+    /*Big smartphones [426px -> 600px]*/
+    .current-build {
+        width: 100vw;
+        height: auto;
+    }
+    .current-build-table {
+        padding: 0;
+        width: 100vw;
+        /* vertical scroll */
+        overflow-y: scroll;
+    }
+    /*
+    .current-build-table > table > thead > tr > th
+    .current-build-table > table > tbody > tr > td 
+    */
+    /* first column size smaller */
 }

@@ -5,7 +5,7 @@ import './Cart.css';
 function Cart() {
     const localStorageCart = localStorage.getItem('cart');
     const cart = JSON.parse(localStorageCart);
-    console.log(cart);
+    //console.log(cart);
     function loadCart() {
         if (cart) {
             return cart.map((item) => {

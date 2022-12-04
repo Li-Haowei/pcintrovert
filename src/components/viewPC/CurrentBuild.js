@@ -59,6 +59,11 @@ function CurrentBuild() {
         }
         loadCurrentBuild();
     }, []);
+    useEffect(() => {
+        // set body color to black
+        document.body.style.backgroundColor = 'black';
+    }, []);
+    
     function createTable(){
         //iterate through the array of objects and create a table
         //first column is the item name, second column is the item price

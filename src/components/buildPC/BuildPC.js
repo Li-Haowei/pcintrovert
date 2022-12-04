@@ -429,27 +429,6 @@ function BuildPC({setCartItems, cartItems}) {
         addExpandableFunctions();
         btnAddToCart();
     }
-    // const addExpandableFunctions = () => {
-    //     //when one expands, all others collapse
-    //     let grids = document.getElementsByClassName('grid');
-    //     for (let i = 0; i < grids.length; i++){
-    //         grids[i].addEventListener('click', () => {
-    //             for (let j = 0; j < grids.length; j++){
-    //                 grids[j].classList.remove('expand');
-    //             }
-    //             grids[i].classList.toggle('expand');
-    //         })
-    //     }
-    // } 
-    // // click outside of grid, remove grid expand, else do nothing
-    // document.addEventListener('click', (e) => {
-    //     let grids = document.getElementsByClassName('grid');
-    //     for (let i = 0; i < grids.length; i++){
-    //         if (grids[i].classList.contains('expand') && !grids[i].contains(e.target)){
-    //             grids[i].classList.remove('expand');
-    //         }
-    //     }
-    // })
 
     // each row there are 4 grids, now click on one grid, it will expand all the grids in the same row
     const addExpandableFunctions = () => {
@@ -473,6 +452,27 @@ function BuildPC({setCartItems, cartItems}) {
             })
         }
     }
+    
+    // bind the removeExpandableFunctions to the document
+    useEffect(() => {
+        // click outside of grid, remove grid expand, else do nothing
+        const removeExpandableFunctions = (e) => {
+            // if the target is grid, do nothing
+            if (e.target.classList.length===0){
+                return;
+            }
+            // if the target is not grid, remove the expand class
+            let grids = document.getElementsByClassName('grid');
+            for (let i = 0; i < grids.length; i++){
+                grids[i].classList.remove('expand');
+            }
+        }
+        
+        document.addEventListener('click', removeExpandableFunctions);
+        return () => {
+            document.removeEventListener('click', removeExpandableFunctions);
+        }
+    }, [])
 
     function priceParser(price){
         // price looks like "$229.99&nbsp;–", "$159.99&nbsp;(15 Offers)–", make it $229.99, $159.99
